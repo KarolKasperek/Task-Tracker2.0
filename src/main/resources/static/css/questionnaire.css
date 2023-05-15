@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+body {
+    background-image: url("/images/registerBg.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+}
+
+p {
+    margin: 10px;
+    color: rgba(255, 255, 255, 0.479);
+    transform: translateY(-6px);
+}
+
+a {
+    color: BLACK;
+}
+
+label {
+    margin: 10px;
+    font-size: 23px;
+    color: rgba(255, 255, 255, 0.479);
+}
+
+#mainFrame {
+    border-style: solid;
+    border-radius: 20px;
+    border-color: rgba(255, 255, 255, 0.479);
+    width: 600px;
+    backdrop-filter: blur(10px);
+
+
+}
+
+#mainFrame h1 {
+    padding-top: 20px;
+    margin: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: rgba(255, 255, 255, 0.479);
+}
+
+.dataInput {
+    margin: 10px;
+    width: 500px;
+    height: 40px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.212);
+
+    color: rgba(255, 255, 255, 0.479);
+
+    font-size: LARGE;
+
+    border-style: SOLID;
+    border-color: rgba(255, 255, 255, 0.479);
+    border-radius: 10px;
+}
+
+#registrationFrame {
+    position: relative;
+    top: -300px;
+
+    width: 530px;
+    height: 650px;
+}
+
+.submitButton {
+    margin: 10px;
+    width: 100px;
+    height: 40px;
+
+    background-color: rgba(0, 0, 0, 0.212);
+    border-style: SOLID;
+    border-color: rgba(255, 255, 255, 0.479);
+    border-radius: 10px;
+
+    font-size: LARGE;
+    font-weight: BOLD;
+
+    color: rgba(255, 255, 255, 0.479);
+
+    transition: 0.4s;
+}
+
+.submitButton:hover {
+    cursor: pointer;
+    color: BLACK;
+    background-color: WHITE;
+}
+
+#taskDescription {
+    height: 200px;
+}

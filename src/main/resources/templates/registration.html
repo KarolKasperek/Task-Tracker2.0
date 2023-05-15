@@ -1,0 +1,40 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskTracker - sign up</title>
+    <link href="../static/css/questionnaire.css" th:href="@{/css/questionnaire.css}" rel="stylesheet" />
+    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
+</head>
+<body>
+    <div id="mainFrame">
+        <h1>Join Now</h1>
+        <br>
+        <br>
+        <form action="/sign-in">
+            <label for="accUsername">Username:</label>
+            <br>
+            <input type="text" name="accUsername" class="dataInput">
+            <br>
+            <br>
+            <label for="accEmail">E-mail:</label>
+            <br>
+            <input type="email" name="accEmail" class="dataInput">
+            <br>
+            <br>
+            <label for="accPassword1">Password:</label>
+            <br>
+            <input type="password" name="accPassword1" class="dataInput">
+            <br>
+            <br>
+            <label for="accPassword2">Repeat password:</label>
+            <br>
+            <input type="password" name="accPassword2" class="dataInput">
+            <br>
+            <br>
+            <input type="submit" class="submitButton">
+        </form>
+    </div>
+</body>
+</html>

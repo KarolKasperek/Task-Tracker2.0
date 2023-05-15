@@ -1,0 +1,43 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task | TaskTracker</title>
+    <link href="../static/css/questionnaire.css" th:href="@{/css/questionnaire.css}" rel="stylesheet" />
+    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
+</head>
+<body>
+    <div id="mainFrame">
+        <form action="/">
+            <label for="name">Task name</label>
+            <br>
+            <input type="text" name="name" class="dataInput">
+            <br>
+            <br>
+            <label for="status">Status</label>
+            <br>
+            <input type="text" name="status" class="dataInput">
+            <br>
+            <br>
+            <label for="description">Description</label>
+            <br>
+            <input type="text" name="description" class="dataInput" id="taskDescription">
+            <br>
+            <br>
+            <label for="deadline">Deadline</label>
+            <br>
+            <input type="date" name="deadline" class="dataInput">
+            <br>
+            <br>
+            <label for="user">User</label>
+            <br>
+            <input type="text" name="user" class="dataInput">
+            <br>
+            <br>
+            <input type="submit" value="Save" class="submitButton">
+            <button class="submitButton">Cancel</button>
+        </form>
+    </div>
+</body>
+</html>
