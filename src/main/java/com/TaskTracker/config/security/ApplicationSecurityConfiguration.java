@@ -52,7 +52,7 @@ public class ApplicationSecurityConfiguration {
 
         UserDetails admin = User.builder()
                 .username("karol05ks@gmail.com")
-                .password(passwordEncoder.encode("32131212"))
+                .password(passwordEncoder.encode("32131212AQ"))
                 .roles(ADMIN.name())
                 .build();
 
