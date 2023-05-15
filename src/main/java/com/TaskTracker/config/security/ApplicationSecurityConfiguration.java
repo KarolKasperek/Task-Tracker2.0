@@ -29,20 +29,20 @@ public class ApplicationSecurityConfiguration {
     protected DefaultSecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
-                .requestMatchers("/css/**", "/images/**", "/js/**", "/register", "registration").permitAll()
+                .requestMatchers("/css/**", "/images/**", "/js/**", "/sign-up", "/sign-up").permitAll()
 //                .requestMatchers("/api/**", "management/api/**").hasRole(ADMIN.name())
                 .requestMatchers(HttpMethod.DELETE).hasAuthority(ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();
-//                .formLogin(
-//                        formLogin ->
-//                                formLogin
-//                                        .loginPage("/login")
-//                                        .loginProcessingUrl("/login")
-//                                        .defaultSuccessUrl("/")
-//                                        .permitAll());
+//                .httpBasic();
+                .formLogin(
+                        formLogin ->
+                                formLogin
+                                        .loginPage("/sign-in")
+                                        .loginProcessingUrl("/sign-in")
+                                        .defaultSuccessUrl("/")
+                                        .permitAll());
 
         return http.build();
     }
