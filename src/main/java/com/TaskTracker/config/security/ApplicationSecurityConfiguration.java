@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.DefaultSecurityFilterChain;
@@ -18,12 +19,6 @@ import static com.TaskTracker.enums.UserRole.ADMIN;
 @Configuration
 @EnableWebSecurity
 public class ApplicationSecurityConfiguration {
-    private final PasswordEncoder passwordEncoder;
-
-    @Autowired
-    public ApplicationSecurityConfiguration(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @Bean
     protected DefaultSecurityFilterChain configure(HttpSecurity http) throws Exception {
@@ -32,10 +27,10 @@ public class ApplicationSecurityConfiguration {
                 .requestMatchers("/css/**", "/images/**", "/js/**", "/sign-up", "/sign-up").permitAll()
 //                .requestMatchers("/api/**", "management/api/**").hasRole(ADMIN.name())
                 .requestMatchers(HttpMethod.DELETE).hasAuthority(ADMIN.name())
-                .anyRequest()
-                .authenticated()
+                .anyRequest().authenticated()
                 .and()
-//                .httpBasic();
+//
+               // .httpBasic();
                 .formLogin(
                         formLogin ->
                                 formLogin
@@ -48,7 +43,7 @@ public class ApplicationSecurityConfiguration {
     }
 
     @Bean
-    protected UserDetailsService userDetailsService() {
+    protected UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
 
         UserDetails admin = User.builder()
                 .username("karol05ks@gmail.com")
@@ -57,5 +52,11 @@ public class ApplicationSecurityConfiguration {
                 .build();
 
         return new InMemoryUserDetailsManager(admin);
+    }
+
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10);
     }
 }
