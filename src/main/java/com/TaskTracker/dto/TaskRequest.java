@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
 
 @Data
@@ -15,7 +14,7 @@ public class TaskRequest {
     private String name;
     private String status;
     private String description;
-    private String deadline;
+    private LocalDate deadline;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;

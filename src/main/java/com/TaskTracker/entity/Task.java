@@ -26,16 +26,12 @@ public class Task {
     @Column(name = "task_deadline")
     private LocalDate deadline;
 
-    @Column(name = "task_user_id")
-    private long userId;
-
-    public Task(String name, String status, String description, LocalDate deadline, long userId) {
+    public Task(String name, String status, String description, LocalDate deadline) {
         this.name = name;
         this.status = status;
         this.description = description;
         this.startDate = LocalDate.now();
         this.deadline = deadline;
-        this.userId = userId;
     }
 
     public Task() {

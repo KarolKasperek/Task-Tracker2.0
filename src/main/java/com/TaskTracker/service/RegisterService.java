@@ -24,7 +24,7 @@ public class RegisterService {
         if (registerRequest.getName().isBlank() || registerRequest.getEmail().isBlank() || registerRequest.getPassword().isBlank()) {
             throw new IllegalArgumentException("Every field should be filled in!");
         } else if (userRepository.existsByEmail(registerRequest.getEmail()) || registerRequest.getPassword().equals(registerRequest.getPasswordRepetition())) {
-            throw new MessageDescriptorFormatException("Email or password is incorrect!");
+            throw new RuntimeException("Email or password is incorrect!");
         }
     }
 }
