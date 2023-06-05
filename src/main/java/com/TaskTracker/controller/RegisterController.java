@@ -25,6 +25,7 @@ public class RegisterController {
 
     @PostMapping("/registered")
     public String register(RegisterRequest registerRequest, Model model) {
+
         try {
             registerService.register(registerRequest);
         } catch (IllegalArgumentException e) {
@@ -34,6 +35,7 @@ public class RegisterController {
             model.addAttribute("registrationErrorMsg", e.getMessage());
             return "registration";
         }
-        return "sign-in";
+
+        return "login";
     }
 }

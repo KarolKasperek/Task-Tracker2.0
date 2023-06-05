@@ -1,11 +1,11 @@
 package com.TaskTracker.config.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,21 +23,21 @@ public class ApplicationSecurityConfiguration {
     @Bean
     protected DefaultSecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
+                .csrf(AbstractHttpConfigurer::disable)
+                .headers(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests()
-                .requestMatchers("/css/**", "/images/**", "/js/**", "/sign-up", "/sign-up").permitAll()
+                .requestMatchers("/css/**", "/images/**", "/js/**", "/sign-up", "/sign-up","/sign-in").permitAll()
 //                .requestMatchers("/api/**", "management/api/**").hasRole(ADMIN.name())
                 .requestMatchers(HttpMethod.DELETE).hasAuthority(ADMIN.name())
                 .anyRequest().authenticated()
                 .and()
-//
-               // .httpBasic();
                 .formLogin(
                         formLogin ->
                                 formLogin
                                         .loginPage("/sign-in")
-                                        .loginProcessingUrl("/sign-in")
                                         .defaultSuccessUrl("/")
-                                        .permitAll());
+                                        .loginProcessingUrl("/sign-in")
+                                        );
 
         return http.build();
     }
@@ -46,8 +46,8 @@ public class ApplicationSecurityConfiguration {
     protected UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
 
         UserDetails admin = User.builder()
-                .username("karol05ks@gmail.com")
-                .password(passwordEncoder.encode("32131212AQ"))
+                .username("a@a")
+                .password(passwordEncoder.encode("1"))
                 .roles(ADMIN.name())
                 .build();
 
