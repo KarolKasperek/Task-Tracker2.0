@@ -9,5 +9,4 @@ public enum UserPermission {
     UserPermission(String value) {
         this.value = value;
     }
-
 }
