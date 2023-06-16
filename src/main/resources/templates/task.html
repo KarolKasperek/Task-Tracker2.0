@@ -41,3 +41,51 @@
     </div>
 </body>
 </html>
+
+<div class="add-task">
+    <div class="task-header">
+        <div class="title">Add task</div>
+        <button data-close-button class="close-button pointer">&times;</button>
+    </div>
+    <div class="task-body">
+
+        <form action="/" method="post">
+            <div class="field">
+                <label class="required">Task name</label>
+                <div>
+                    <input th:field="${taskRequest.name}" class="input">
+                    <div th:if="${#fields.hasErrors('taskRequest.name')}" th:errors="${taskRequest.name}" class="error">Name Error</div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Status</label>
+                <div>
+                    <select th:field="${taskRequest.status}" class="input pointer">
+                        <option value="toDo">To do</option>
+                        <option value="inReview">In review</option>
+                        <option value="inProgress">In progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label for="description">Description</label>
+                <div>
+                    <textarea th:field="${taskRequest.description}" id="description" class="task-description"></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <label for="deadline">Deadline</label>
+                <div>
+                    <input th:field="${taskRequest.deadline}" type="date" id="deadline" class="input pointer">
+                </div>
+                <div th:text="${invalidDateMessage}" class="error">error</div>
+            </div>
+            <div class="submit-container">
+                <input class="submit-button pointer" type="submit" value="Create">
+            </div>
+        </form>
+    </div>
+
+</div>

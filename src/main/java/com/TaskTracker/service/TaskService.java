@@ -2,6 +2,7 @@ package com.TaskTracker.service;
 
 import com.TaskTracker.dto.TaskRequest;
 import com.TaskTracker.entity.Task;
+import com.TaskTracker.mapper.TaskMapper;
 import com.TaskTracker.repo.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.hibernate.validator.internal.engine.messageinterpolation.parser.MessageDescriptorFormatException;
@@ -10,26 +11,23 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class TaskService {
 
     private TaskRepository taskRepository;
+    private TaskMapper taskMapper;
 
-    public void addTask(TaskRequest taskDTO) {
-        if (checkMandatoryFields(taskDTO.getName(), taskDTO.getStatus())) {
+    public void addTask(TaskRequest taskRequest) {
+        if (checkMandatoryFields(taskRequest.getName(), taskRequest.getStatus())) {
             throw new IllegalArgumentException("Mandatory fields are not filled in!");
         }
-        if (!checkIfDatesAreValid(taskDTO.getDeadline().toString())) {
+        if (!checkIfDatesAreValid(taskRequest.getDeadline().toString())) {
             throw new DateTimeException("Invalid date selected!");
         }
-        Task taskEntity =
-                new Task(
-                        taskDTO.getName(),
-                        taskDTO.getStatus(),
-                        taskDTO.getDescription(),
-                        taskDTO.getDeadline());
+        Task taskEntity = taskMapper.toTaskEntity(taskRequest);
         taskRepository.save(taskEntity);
     }
 
@@ -41,8 +39,10 @@ public class TaskService {
         return deadline.isBlank() || LocalDate.now().isBefore(LocalDate.parse(deadline));
     }
 
-    public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+    public List<TaskRequest> getAllTasks() {
+        return taskRepository.findAll().stream()
+                .map(task -> taskMapper.toTaskRequest(task))
+                .collect(Collectors.toList());
     }
 
     public Task getTaskInfo(Long taskId) {

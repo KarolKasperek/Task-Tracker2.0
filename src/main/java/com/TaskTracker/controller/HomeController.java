@@ -22,7 +22,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String getHome(Model model) {
-        List<Task> taskList = taskService.getAllTasks();
+        List<TaskRequest> taskList = taskService.getAllTasks();
 
         model.addAttribute("taskList", taskList);
         getTaskRequest(model);
