@@ -1,0 +1,3 @@
+-dodawanie i wyswietlanie taskow, mozliwosc ich edytowania, przypisywanie do osob, przenoszenie taskow pomiedzy kategoriami
+-pakiet z controllerami RESTowymi umozliwiajacych uzywanie tych samych operacji poprzez POSTMana
+-aktualizacja security, umozliwienie rejestracji nowych uzytkownikow

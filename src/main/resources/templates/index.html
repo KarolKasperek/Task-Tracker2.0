@@ -23,20 +23,49 @@
         <div class="status-card">
             <h1>To do</h1>
             <hr>
+            <ul>
+                <div th:each="task:${taskList}" th:if="${task.status} == 'toDo'">
+                    <a th:href="@{'/edit/' + ${task.id}}">
+                        <li th:text="${task.name}" class="pointer"></li>
+                    </a>
+                </div>
+            </ul>
         </div>
         <div class="status-card">
             <h1>In progress</h1>
             <hr>
+            <ul>
+                <div th:each="task:${taskList}" th:if="${task.status} == 'inProgress'">
+                    <a th:href="@{'/edit/' + ${task.id}}">
+                        <li th:text="${task.name}" class="pointer"></li>
+                    </a>
+                </div>
+            </ul>
         </div>
         <div class="status-card">
             <h1>In review</h1>
             <hr>
+            <ul class="list-items-inreview">
+                <div th:each="task:${taskList}" th:if="${task.status} == 'inReview'">
+                    <a th:href="@{'/edit/' + ${task.id}}">
+                        <li th:text="${task.name}" class="pointer"></li>
+                    </a>
+                </div>
+            </ul>
         </div>
         <div class="status-card">
             <h1>Done</h1>
             <hr>
+            <ul class="list-items-done">
+                <div th:each="task:${taskList}" th:if="${task.status} == 'done'">
+                    <a th:href="@{'/edit/' + ${task.id}}">
+                        <li th:text="${task.name}" class="pointer"></li>
+                    </a>
+                </div>
+            </ul>
         </div>
     </article>
+
 
     <script>
         var signOutButton = document.getElementById("signOutBt");

@@ -8,84 +8,55 @@
     <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
 </head>
 <body>
-    <div id="mainFrame">
-        <form action="/">
-            <label for="name">Task name</label>
+
+        <div id="mainFrame">
             <br>
-            <input type="text" name="name" class="dataInput">
-            <br>
-            <br>
-            <label for="status">Status</label>
-            <br>
-            <input type="text" name="status" class="dataInput">
-            <br>
-            <br>
-            <label for="description">Description</label>
-            <br>
-            <input type="text" name="description" class="dataInput" id="taskDescription">
-            <br>
-            <br>
-            <label for="deadline">Deadline</label>
-            <br>
-            <input type="date" name="deadline" class="dataInput">
-            <br>
-            <br>
-            <label for="user">User</label>
-            <br>
-            <input type="text" name="user" class="dataInput">
-            <br>
-            <br>
-            <input type="submit" value="Save" class="submitButton">
-            <button class="submitButton">Cancel</button>
-        </form>
+
+            <form action="/new-task" method="post">
+                <div class="field">
+                    <label class="required">Task name</label>
+                    <div>
+                        <input th:field="${taskRequest.name}" class="dataInput">
+                        <div th:if="${#fields.hasErrors('taskRequest.name')}" th:errors="${taskRequest.name}" class="error">Name Error</div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="field">
+                    <label>Status</label>
+                    <div>
+                        <select th:field="${taskRequest.status}" class="optionPane">
+                            <option value="toDo">To do</option>
+                            <option value="inProgress">In progress</option>
+                            <option value="inReview">In review</option>
+                            <option value="done">Done</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+
+                <div class="field">
+                    <label for="description">Description</label>
+                    <div>
+                        <textarea th:field="${taskRequest.description}" id="description" class="dataInput"></textarea>
+                    </div>
+                </div>
+                <br>
+
+                <div class="field">
+                    <label for="deadline">Deadline</label>
+                    <div>
+                        <input th:field="${taskRequest.deadline}" type="date" id="deadline" class="dateInput">
+                    </div>
+                    <div th:text="${invalidDateMessage}" class="error">error</div>
+                </div>
+                <br>
+
+                <div class="submit-container">
+                    <input class="submitButton" type="submit" value="Create">
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
-
-<div class="add-task">
-    <div class="task-header">
-        <div class="title">Add task</div>
-        <button data-close-button class="close-button pointer">&times;</button>
-    </div>
-    <div class="task-body">
-
-        <form action="/" method="post">
-            <div class="field">
-                <label class="required">Task name</label>
-                <div>
-                    <input th:field="${taskRequest.name}" class="input">
-                    <div th:if="${#fields.hasErrors('taskRequest.name')}" th:errors="${taskRequest.name}" class="error">Name Error</div>
-                </div>
-            </div>
-
-            <div class="field">
-                <label>Status</label>
-                <div>
-                    <select th:field="${taskRequest.status}" class="input pointer">
-                        <option value="toDo">To do</option>
-                        <option value="inReview">In review</option>
-                        <option value="inProgress">In progress</option>
-                        <option value="done">Done</option>
-                    </select>
-                </div>
-            </div>
-            <div class="field">
-                <label for="description">Description</label>
-                <div>
-                    <textarea th:field="${taskRequest.description}" id="description" class="task-description"></textarea>
-                </div>
-            </div>
-            <div class="field">
-                <label for="deadline">Deadline</label>
-                <div>
-                    <input th:field="${taskRequest.deadline}" type="date" id="deadline" class="input pointer">
-                </div>
-                <div th:text="${invalidDateMessage}" class="error">error</div>
-            </div>
-            <div class="submit-container">
-                <input class="submit-button pointer" type="submit" value="Create">
-            </div>
-        </form>
-    </div>
-
-</div>

@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Faustina:ital,wght@1,300&display=swap');
 
 * {
     padding: 0;
@@ -18,14 +19,8 @@ body {
     background-attachment: fixed;
 }
 
-.workspace {
-    margin-left: 30px;
-    margin-right: 30px;
-    gap: 20px;
-    display: flex;
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
+h1 {
+    cursor: default;
 }
 
 hr {
@@ -35,6 +30,23 @@ hr {
 
 p {
     font-family: 'Climate Crisis', cursive;
+}
+
+ul {
+    transform: translateX(30px);
+    font-family: 'Faustina', serif;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.workspace {
+    margin-left: 30px;
+    margin-right: 30px;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
 }
 
 /* navigation bar */
