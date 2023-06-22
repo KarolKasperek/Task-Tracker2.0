@@ -1,3 +1,9 @@
 -dodawanie i wyswietlanie taskow, mozliwosc ich edytowania, przypisywanie do osob, przenoszenie taskow pomiedzy kategoriami
 -pakiet z controllerami RESTowymi umozliwiajacych uzywanie tych samych operacji poprzez POSTMana
 -aktualizacja security, umozliwienie rejestracji nowych uzytkownikow
+
+
+-add a card pod kazda kategoria, moziwosc edycji taskow
+-dodac rejestracje i logowanie przez nowych uzytkownikow
+-nowy nav bar
+-wylogowywanie uzytkownika, teraz tylko przekierowywuje na strone !!!

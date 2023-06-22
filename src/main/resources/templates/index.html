@@ -12,13 +12,13 @@
 <body>
     <nav class="navigation">
         <ul>
+            <li><img id="icon" src="../static/images/taskTrucker.png" alt="logo" th:src="@{/images/taskTrucker.png}"></li>
             <li><a href="#">| Home</a></li>
-            <li><a id="newTaskBt" href="/new-task">| New task</a></li>
             <li><a href="#">| Settings</a></li>
             <button id="signOutBt">Sign out</button>
         </ul>
     </nav>
-    <hr>
+    <hr id="navSplitLine">
     <article class="workspace">
         <div class="status-card">
             <h1>To do</h1>
@@ -30,6 +30,7 @@
                     </a>
                 </div>
             </ul>
+            <a href="/new-task"><p class="newTaskBt">➕ Add a card</p></a>
         </div>
         <div class="status-card">
             <h1>In progress</h1>
@@ -41,6 +42,7 @@
                     </a>
                 </div>
             </ul>
+            <a href="/new-task"><p class="newTaskBt">➕ Add a card</p></a>
         </div>
         <div class="status-card">
             <h1>In review</h1>
@@ -52,6 +54,7 @@
                     </a>
                 </div>
             </ul>
+            <a href="/new-task"><p class="newTaskBt">➕ Add a card</p></a>
         </div>
         <div class="status-card">
             <h1>Done</h1>
@@ -63,6 +66,7 @@
                     </a>
                 </div>
             </ul>
+            <a href="/new-task"><p class="newTaskBt">➕ Add a card</p></a>
         </div>
     </article>
 
