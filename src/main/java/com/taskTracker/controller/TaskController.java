@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class TaskController {
     private TaskService taskService;
 
-    @GetMapping("/new-task")
+    @GetMapping("/task-details")
     public String getTask(Model model) {
         TaskRequest taskRequest = new TaskRequest();
         model.addAttribute("taskRequest", taskRequest);
         return "task";
     }
 
-    @GetMapping("/task-details/{id}")
+    @GetMapping("/edit/{id}")
     public String getTaskDetails(@PathVariable("id") Long id, Model model) {
 
         try {
@@ -34,7 +34,7 @@ public class TaskController {
         return "task";
     }
 
-    @PostMapping("/new-task")
+    @PostMapping("/task-details")
     public String addTask(TaskRequest taskRequest, Model model) {
 
         taskService.addTask(taskRequest);

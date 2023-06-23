@@ -1,9 +1,10 @@
 -dodawanie i wyswietlanie taskow, mozliwosc ich edytowania, przypisywanie do osob, przenoszenie taskow pomiedzy kategoriami
 -pakiet z controllerami RESTowymi umozliwiajacych uzywanie tych samych operacji poprzez POSTMana
 -aktualizacja security, umozliwienie rejestracji nowych uzytkownikow
+- zajac sie nowy nav bar
 
-
--add a card pod kazda kategoria, moziwosc edycji taskow
--dodac rejestracje i logowanie przez nowych uzytkownikow
--nowy nav bar
--wylogowywanie uzytkownika, teraz tylko przekierowywuje na strone !!!
+-rejestracja nie dziala!
+-kategoria tasku w zaleznosci od tego gdzie klikam +addacard
+-problem z przegladaniem i edytowaniem taskow
+-naprawic rozszerzanie sie wszystkich na raz kolumn z taskami
+-wylogowywanie uzytkownika, teraz tylko przekierowywuje na strone
