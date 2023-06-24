@@ -1,7 +1,6 @@
 package com.taskTracker.controller;
 
 import com.taskTracker.dto.RegisterRequest;
-import com.taskTracker.dto.TaskRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,6 @@ import com.taskTracker.service.RegisterService;
 @AllArgsConstructor
 public class RegisterController {
 
-
     private RegisterService registerService;
 
     @GetMapping("/sign-up")
@@ -23,7 +21,7 @@ public class RegisterController {
         return "registration";
     }
 
-    @PostMapping("/registered")
+    /*@PostMapping("/registered")
     public String register(RegisterRequest registerRequest, Model model) {
 
         try {
@@ -37,11 +35,10 @@ public class RegisterController {
         }
 
         return "login";
-    }
+    }*/
 
     @PostMapping("/sign-up")
     public String addUser(RegisterRequest registerRequest, Model model) {
-
         registerService.register(registerRequest);
         return "redirect:/sign-in";
     }

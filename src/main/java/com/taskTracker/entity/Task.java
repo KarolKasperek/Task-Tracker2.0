@@ -34,5 +34,5 @@ public class Task {
     private LocalDate deadline;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private User user;
+    private Account account;
 }

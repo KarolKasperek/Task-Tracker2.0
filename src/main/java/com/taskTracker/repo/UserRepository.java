@@ -1,10 +1,13 @@
 package com.taskTracker.repo;
 
 
-import com.taskTracker.entity.User;
+import com.taskTracker.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<Account, Long> {
 
     boolean existsByEmail(String email);
+    Optional<Account> getByEmail(String email);
 }

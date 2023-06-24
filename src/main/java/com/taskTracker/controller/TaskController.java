@@ -23,7 +23,7 @@ public class TaskController {
     }
 
     @GetMapping("/edit/{id}")
-    public String getTaskDetails(@PathVariable("id") Long id, Model model) {
+    public String getTaskDetails(@PathVariable Long id, Model model) {
 
         try {
             model.addAttribute("taskToView", taskService.getTaskInfo(id));
@@ -34,8 +34,8 @@ public class TaskController {
         return "task";
     }
 
-    @PostMapping("/task-details")
-    public String addTask(TaskRequest taskRequest, Model model) {
+    @PostMapping("/task-details/{category}")
+    public String addTask(TaskRequest taskRequest,@PathVariable String category, Model model) {
 
         taskService.addTask(taskRequest);
         return "redirect:/";
