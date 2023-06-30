@@ -1,11 +1,10 @@
 -dodawanie i wyswietlanie taskow, mozliwosc ich edytowania, przypisywanie do osob, przenoszenie taskow pomiedzy kategoriami
 -pakiet z controllerami RESTowymi umozliwiajacych uzywanie tych samych operacji poprzez POSTMana
--aktualizacja security, umozliwienie rejestracji nowych uzytkownikow
--testy jednostkowe
 -ogarnac nowy nav bar
 -role uzytkownikow
+-testy jednostkowe
 
 -kategoria tasku w zaleznosci od tego gdzie klikam +addacard
--problem z przegladaniem i edytowaniem taskow
+-problem z edytowaniem taskow
 -naprawic rozszerzanie sie wszystkich na raz kolumn z taskami
--wylogowywanie uzytkownika, teraz tylko przekierowywuje na strone
+-wylogowywanie uzytkownika usuwa go z bazy danych
