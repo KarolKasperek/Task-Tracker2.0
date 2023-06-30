@@ -27,7 +27,6 @@ public class TaskController {
 
     @GetMapping("/edit/{id}")
     public String getTaskDetails(@PathVariable Long id, Model model) {
-
         try {
             model.addAttribute("taskToView", taskService.getTaskInfo(id));
         } catch (TaskDoesNotExistException e) {

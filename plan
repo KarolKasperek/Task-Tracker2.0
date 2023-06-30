@@ -4,7 +4,6 @@
 -role uzytkownikow
 -testy jednostkowe
 
--kategoria tasku w zaleznosci od tego gdzie klikam +addacard
--problem z edytowaniem taskow
--naprawic rozszerzanie sie wszystkich na raz kolumn z taskami
--wylogowywanie uzytkownika usuwa go z bazy danych
+-naprawic zsynchronizowane rozszerzanie sie wszystkich kolumn z taskami
+-wylogowywanie uzytkownika usuwa go z database
+-wyswietlanie i edytowanie taskow
