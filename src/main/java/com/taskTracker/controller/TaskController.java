@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @AllArgsConstructor
@@ -16,9 +17,11 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping("/task-details")
-    public String getTask(Model model) {
+    public String getTask(@RequestParam(required = false) String status, Model model) {
         TaskRequest taskRequest = new TaskRequest();
+        taskRequest.setStatus(status);
         model.addAttribute("taskRequest", taskRequest);
+//        model.addAttribute("status", status);
         return "task";
     }
 
@@ -34,8 +37,8 @@ public class TaskController {
         return "task";
     }
 
-    @PostMapping("/task-details/{category}")
-    public String addTask(TaskRequest taskRequest,@PathVariable String category, Model model) {
+    @PostMapping("/task-details")
+    public String addTask(TaskRequest taskRequest, Model model) {
 
         taskService.addTask(taskRequest);
         return "redirect:/";

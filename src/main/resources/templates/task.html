@@ -26,10 +26,10 @@
                     <label>Status</label>
                     <div>
                         <select th:field="${taskRequest.status}" class="optionPane">
-                            <option value="toDo">To do</option>
-                            <option value="inProgress">In progress</option>
-                            <option value="inReview">In review</option>
-                            <option value="done">Done</option>
+                            <option value="toDo" th:selected="$param.status == null or {taskRequest.status == 'toDo'}">To do</option>
+                            <option value="inProgress" th:selected="${taskRequest.status == 'inProgress'}">In progress</option>
+                            <option value="inReview" th:selected="${taskRequest.status == 'inReview'}">In review</option>
+                            <option value="done" th:selected="${taskRequest.status == 'done'}">Done</option>
                         </select>
                     </div>
                 </div>
