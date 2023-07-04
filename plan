@@ -1,9 +1,10 @@
--dodawanie i wyswietlanie taskow, mozliwosc ich edytowania, przypisywanie do osob, przenoszenie taskow pomiedzy kategoriami
--pakiet z controllerami RESTowymi umozliwiajacych uzywanie tych samych operacji poprzez POSTMana
--ogarnac nowy nav bar
--role uzytkownikow
+-pakiet z controllerami RESTowymi umozliwiajacymi uzywanie tych samych operacji poprzez POSTMana
+-navbar
 -testy jednostkowe
 
--naprawic zsynchronizowane rozszerzanie sie wszystkich kolumn z taskami
--wylogowywanie uzytkownika usuwa go z database
--wyswietlanie i edytowanie taskow
+errors:
+-zsynchronizowane rozszerzanie sie wszystkich kolumn z taskami
+-zamiast zeby task zostal zedytowany, tworzy sie nowy
+-data nie zapisuje sie w tasku
+
+dodac mozliwosc ustawienia usera przy tasku

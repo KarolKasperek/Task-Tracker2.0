@@ -1,7 +1,7 @@
 package com.taskTracker.config.security;
 
+import com.taskTracker.handler.AccessDeniedHandler;
 import com.taskTracker.service.RegisterService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -10,12 +10,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 
-import static com.taskTracker.enums.UserRole.ADMIN;
+import static com.taskTracker.enums.Role.ADMIN;
 
 @Configuration
 @EnableWebSecurity
 public class ApplicationSecurityConfiguration {
-    private RegisterService registerService;
+    private final RegisterService registerService;
 
     public ApplicationSecurityConfiguration(RegisterService registerService) {
         this.registerService=registerService;
@@ -32,6 +32,9 @@ public class ApplicationSecurityConfiguration {
 //                .requestMatchers("/api/**", "management/api/**").hasRole(ADMIN.name())
                 .requestMatchers(HttpMethod.DELETE).hasAuthority(ADMIN.name())
                 .anyRequest().authenticated()
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(new AccessDeniedHandler())
                 .and()
                 .formLogin(
                         formLogin ->

@@ -6,6 +6,8 @@ import com.taskTracker.mapper.TaskMapper;
 import com.taskTracker.repo.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -22,18 +24,18 @@ public class TaskService {
         if (checkMandatoryFields(taskRequest.getName(), taskRequest.getStatus())) {
             throw new IllegalArgumentException("Mandatory fields are not filled in!");
         }
-//        if (!checkIfDatesAreValid(taskRequest.getDeadline().toString())) {
-//            throw new DateTimeException("Invalid date selected!");
-//        }
-        Task taskEntity = taskMapper.toTaskEntity(taskRequest);
-        taskRepository.save(taskEntity);
+        if (!checkIfDatesAreValid(taskRequest.getDeadline().toString())) {
+            throw new DateTimeException("Invalid date selected!");
+        }
+        Task task = taskMapper.toTaskEntity(taskRequest);
+        taskRepository.save(task);
     }
 
     private boolean checkMandatoryFields(String name, String status) {
         return name.isBlank() || status.isBlank();
     }
 
-    private boolean checkIfDatesAreValid(String deadline) { //TODO what is wrong with this method? at line 27 program throws an error.
+    private boolean checkIfDatesAreValid(String deadline) {
         return deadline.isBlank() || LocalDate.now().isBefore(LocalDate.parse(deadline));
     }
 

@@ -1,18 +1,14 @@
 package com.taskTracker.entity;
 
+import com.taskTracker.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "accounts")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -21,7 +17,7 @@ public class Account {
     @Id
     @Column(name = "account_id", columnDefinition = "BIGINT")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "account_name")
     private String name;
@@ -31,8 +27,10 @@ public class Account {
 
     @Column(name = "account_password")
     private String password;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
     private List<Task> taskList;
 
 

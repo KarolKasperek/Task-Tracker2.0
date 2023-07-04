@@ -5,8 +5,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-position: center;
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 p {

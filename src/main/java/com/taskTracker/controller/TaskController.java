@@ -1,6 +1,7 @@
 package com.taskTracker.controller;
 
 import com.taskTracker.dto.TaskRequest;
+import com.taskTracker.service.RegisterService;
 import com.taskTracker.service.TaskService;
 import com.taskTracker.exception.TaskDoesNotExistException;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @AllArgsConstructor
 public class TaskController {
     private TaskService taskService;
+    private RegisterService registerService;
 
     @GetMapping("/task-details")
     public String getTask(@RequestParam(required = false) String status, Model model) {
@@ -27,8 +29,9 @@ public class TaskController {
 
     @GetMapping("/edit/{id}")
     public String getTaskDetails(@PathVariable Long id, Model model) {
+        addUsersAttribute(model);
         try {
-            model.addAttribute("taskToView", taskService.getTaskInfo(id));
+            model.addAttribute("taskRequest", taskService.getTaskInfo(id));
         } catch (TaskDoesNotExistException e) {
             model.addAttribute("noTaskMessage", e.getMessage());
         }
@@ -41,5 +44,9 @@ public class TaskController {
 
         taskService.addTask(taskRequest);
         return "redirect:/";
+    }
+
+    private void addUsersAttribute(Model model) {
+        model.addAttribute("users", registerService.getAllUsers());
     }
 }
