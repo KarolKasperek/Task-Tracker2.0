@@ -1,3 +1,4 @@
+-dodac mozliwosc ustawienia usera przy tasku
 -pakiet z controllerami RESTowymi umozliwiajacymi uzywanie tych samych operacji poprzez POSTMana
 -navbar
 -testy jednostkowe
@@ -5,6 +6,4 @@
 errors:
 -zsynchronizowane rozszerzanie sie wszystkich kolumn z taskami
 -zamiast zeby task zostal zedytowany, tworzy sie nowy
--data nie zapisuje sie w tasku
-
-dodac mozliwosc ustawienia usera przy tasku
+-deadline w tasku nie zapisuje sie
