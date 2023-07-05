@@ -15,8 +15,8 @@ Developed by [Karol Kasperek](https://github.com/KarolKasperek).
 
 ## Screenshots
 
+![workspaceScreenShot](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/e0444794-252e-463f-8521-3dab1f02c1ff)
 *Home view*
-![image](https://github.com/karolkasperek/[reponame]/blob/[branch]/image.jpg?raw=true)
 
-*Task creation view*            
-![image](https://github.com/karolkasperek/[reponame]/blob/[branch]/image.jpg?raw=true)
+![taskCretingScreenShot](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/479cba58-4b83-493a-ab74-b5476b3a1739)
+*Task creation view*
