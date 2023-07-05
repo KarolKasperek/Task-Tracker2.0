@@ -20,15 +20,16 @@ public class TaskController {
 
     @GetMapping("/task-details")
     public String getTask(@RequestParam(required = false) String status, Model model) {
+
         TaskRequest taskRequest = new TaskRequest();
         taskRequest.setStatus(status);
         model.addAttribute("taskRequest", taskRequest);
-//        model.addAttribute("status", status);
         return "task";
     }
 
     @GetMapping("/edit/{id}")
     public String getTaskDetails(@PathVariable Long id, Model model) {
+
         addUsersAttribute(model);
         try {
             model.addAttribute("taskRequest", taskService.getTaskInfo(id));

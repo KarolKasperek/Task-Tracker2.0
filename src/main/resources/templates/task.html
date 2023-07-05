@@ -54,18 +54,18 @@
                 </div>
                 <br>
 
-<!--                <div class="field">-->
-<!--                    <label for="users">User</label>-->
-<!--                    <div>-->
-<!--                        <select th:field="${taskRequest.account.id}" class="input pointer" id="users" name="users">-->
-<!--                            <option value="">Unassigned</option>-->
-<!--                            <div th:each="account:${accounts}">-->
-<!--                                <option th:value="${account.id}" th:text="${account.name}"></option>-->
-<!--                            </div>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <br>-->
+                <div class="field">
+                    <label for="accounts">User</label>
+                    <div>
+                        <select th:field="${taskRequest.account}" name="accounts" id="accounts" class="optionPane">
+                            <option value="">Unassigned</option>
+                            <div th:each="account:${accounts}">
+                                <option th:value="${account}" th:text="${account.name}"></option>
+                            </div>
+                        </select>
+                    </div>
+                </div>
+                <br>
 
                 <div class="submit-container">
                     <input class="submitButton" type="submit" value="Save">
