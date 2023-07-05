@@ -16,7 +16,7 @@ Developed by [Karol Kasperek](https://github.com/KarolKasperek).
 ## Screenshots
 
 *Home view*
-![image]()
+![image](https://github.com/karolkasperek/[reponame]/blob/[branch]/image.jpg?raw=true)
 
 *Task creation view*            
-![image]()
+![image](https://github.com/karolkasperek/[reponame]/blob/[branch]/image.jpg?raw=true)
