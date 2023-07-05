@@ -1,9 +1,11 @@
 -pakiet z controllerami RESTowymi umozliwiajacymi uzywanie tych samych operacji poprzez POSTMana
 -navbar
 -testy jednostkowe
+-readme file
 
 errors:
 -lista userow nie wyswietla sie w ankiecie taska
--deadline w tasku nie zapisuje sie
+-deadline nie wyswietla sie podczas edytowania taska
 -zamiast zeby task zostal zedytowany, tworzy sie nowy
 -zsynchronizowane rozszerzanie sie wszystkich kolumn z taskami
+-"+addtask" podczas wykonywania animacji ::hover wplywa tez na wielkosc ramki
