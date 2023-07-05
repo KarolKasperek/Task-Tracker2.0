@@ -2,15 +2,11 @@ errors:
 -lista userow nie wyswietla sie w ankiecie taska
 -deadline nie wyswietla sie podczas edytowania taska
 -zamiast zeby task zostal zedytowany, tworzy sie nowy
--zsynchronizowane rozszerzanie sie wszystkich kolumn z taskami
--"+addtask" podczas wykonywania animacji ::hover wplywa tez na wielkosc ramki
--nowy plik navBar.html umieszczany na stronach index, members, share
 
 
 -navbar
 na stronie /members ma sie wyswietlac lista userow razem z ich taskami(mozna to wyswietlic w html-u lista <dl><dt><dd><dl>)
 na stronie /share ma sie wyswietlac strona poprzez ktora mozna wyslac komus na maila jakies zdjecie lub tekstowa wersje workspace
-
 -pakiet z controllerami RESTowymi umozliwiajacymi uzywanie tych samych operacji poprzez POSTMana
 
 
