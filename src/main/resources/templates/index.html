@@ -10,15 +10,17 @@
 </head>
 
 <body>
-    <nav class="navigation">
-        <ul>
-            <li><img id="icon" src="../static/images/taskTrucker.png" alt="logo" th:src="@{/images/taskTrucker.png}"></li>
-            <li><a href="/">| Home</a></li>
-            <li><a href="/members">| Members</a></li>
-            <li><a href="/share">| Share</a></li>
-            <a href="/sign-out"><button id="signOutBt">Sign out</button></a>
-        </ul>
-    </nav>
+    <!--Navigation bar-->
+    <div id="nav-placeholder">
+
+    </div>
+
+    <script>
+            $(function(){
+              $("#nav-placeholder").load("/nav.html");
+            });
+        </script>
+    <!--end of Navigation bar-->
     <hr id="navSplitLine">
 
     <article class="workspace">

@@ -7,20 +7,21 @@
     <title>TaskTracker- Share</title>
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
     <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
 <body>
-    <nav class="navigation">
-        <ul>
-            <li><img id="icon" src="../static/images/taskTrucker.png" alt="logo" th:src="@{/images/taskTrucker.png}"></li>
-            <li><a href="/">| Home</a></li>
-            <li><a href="/members">| Members</a></li>
-            <li><a href="/share">| Share</a></li>
-            <a href="/sign-out"><button id="signOutBt">Sign out</button></a>
-        </ul>
-    </nav>
+    <!--Navigation bar-->
+    <div id="nav-placeholder">
+
+    </div>
+
+    <script>
+        $(function(){
+          $("#nav-placeholder").load("/nav.html");
+        });
+    </script>
+    <!--end of Navigation bar-->
     <hr id="navSplitLine">
-
-
 </body>
 </html>
