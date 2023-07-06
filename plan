@@ -3,13 +3,9 @@ errors:
 -deadline nie wyswietla sie podczas edytowania taska
 -zamiast zeby task zostal zedytowany, tworzy sie nowy
 
-
+TODO
+-pakiet z controllerami RESTowymi umozliwiajacymi uzywanie tych samych operacji poprzez POSTMana
 -navbar
 na stronie /members ma sie wyswietlac lista userow razem z ich taskami(mozna to wyswietlic w html-u lista <dl><dt><dd><dl>)
 na stronie /share ma sie wyswietlac strona poprzez ktora mozna wyslac komus na maila jakies zdjecie lub tekstowa wersje workspace
--pakiet z controllerami RESTowymi umozliwiajacymi uzywanie tych samych operacji poprzez POSTMana
-
-
----
 -testy jednostkowe
--readme file
