@@ -1,8 +1,12 @@
 TODO:
+
+sobota:
 -na stronie /members ma sie wyswietlac lista userow razem z ich taskami(mozna to wyswietlic w html-u lista <dl><dt><dd><dl>)
 -na stronie /share backend wysylania maila na podany przez uzytkownika adres z tekstowa wersja workspace
--testy jednostkowe
 
+niedziela, poniedzialek:
 errors:
--lista userow nie wyswietla sie podczas edycji taska
 -deadline nie wyswietla sie w task.html podczas edytowania taska
+-usuwanie taska
+new:
+-testy jednostkowe
