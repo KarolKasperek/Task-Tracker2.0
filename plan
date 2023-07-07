@@ -4,5 +4,5 @@ TODO:
 -testy jednostkowe
 
 errors:
--obsluga niewybranego uzytkownika
+-lista userow nie wyswietla sie podczas edycji taska
 -deadline nie wyswietla sie w task.html podczas edytowania taska

@@ -32,6 +32,7 @@ public class TaskController {
     public String getTaskDetails(@PathVariable Long id, Model model) {
 
         addUsersAttribute(model);
+        model.addAttribute("accounts", registerService.getAllAccounts());
         try {
             model.addAttribute("taskRequest", taskService.getTaskInfo(id));
         } catch (TaskDoesNotExistException e) {
