@@ -24,6 +24,7 @@ public class TaskController {
         TaskRequest taskRequest = new TaskRequest();
         taskRequest.setStatus(status);
         model.addAttribute("taskRequest", taskRequest);
+        model.addAttribute("accounts", registerService.getAllAccounts());
         return "task";
     }
 
@@ -48,6 +49,6 @@ public class TaskController {
     }
 
     private void addUsersAttribute(Model model) {
-        model.addAttribute("users", registerService.getAllUsers());
+        model.addAttribute("users", registerService.getAllAccounts());
     }
 }

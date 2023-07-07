@@ -1,10 +1,8 @@
-errors:
--lista userow nie wyswietla sie w ankiecie taska
--deadline nie wyswietla sie podczas edytowania taska
--zamiast zeby task zostal zedytowany, tworzy sie nowy
-
-TODO
--navbar
-na stronie /members ma sie wyswietlac lista userow razem z ich taskami(mozna to wyswietlic w html-u lista <dl><dt><dd><dl>)
-na stronie /share backend wysylania maila na podany przez uzytkownika adres z tekstowa wersja workspace
+TODO:
+-na stronie /members ma sie wyswietlac lista userow razem z ich taskami(mozna to wyswietlic w html-u lista <dl><dt><dd><dl>)
+-na stronie /share backend wysylania maila na podany przez uzytkownika adres z tekstowa wersja workspace
 -testy jednostkowe
+
+errors:
+-obsluga niewybranego uzytkownika
+-deadline nie wyswietla sie w task.html podczas edytowania taska

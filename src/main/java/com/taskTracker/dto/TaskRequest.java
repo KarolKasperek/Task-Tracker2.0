@@ -1,6 +1,5 @@
 package com.taskTracker.dto;
 
-import com.taskTracker.entity.Account;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,10 +17,6 @@ public class TaskRequest {
     private String status;
     private String description;
     private LocalDate deadline;
-    private Account account;
+    private Long accountId;
     private LocalDate startDate;
-
-    public Account getAccount() {
-        return account;
-    }
 }

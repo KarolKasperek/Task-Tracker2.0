@@ -3,12 +3,19 @@ package com.taskTracker.mapper;
 import com.taskTracker.dto.TaskRequest;
 import com.taskTracker.entity.Task;
 import com.taskTracker.exception.TaskDoesNotExistException;
+import com.taskTracker.repo.AccountRepository;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Component
 public class TaskMapper {
+    private AccountRepository accountRepo;
+
+    public TaskMapper(AccountRepository accountRepo) {
+        this.accountRepo = accountRepo;
+    }
+
     public Task toTaskEntity(TaskRequest taskRequest) {
 
         if (taskRequest == null) {
@@ -31,8 +38,10 @@ public class TaskMapper {
         task.setStatus(taskRequest.getStatus());
         task.setDeadline(taskRequest.getDeadline());
         task.setStartDate(taskRequest.getStartDate());
-        task.setAccount(taskRequest.getAccount());
-
+        if (taskRequest.getAccountId() == null) {
+            return task;
+        }
+        task.setAccount(accountRepo.findById(taskRequest.getAccountId()).orElseThrow()); //TODO obsluga tego wyjatku
         return task;
     }
 
@@ -50,7 +59,9 @@ public class TaskMapper {
         taskRequest.setStatus(task.getStatus());
         taskRequest.setDeadline(task.getDeadline());
         taskRequest.setStartDate(task.getStartDate());
-        taskRequest.setAccount(task.getAccount());
+        if (task.getAccount() != null) {
+            taskRequest.setAccountId(task.getAccount().getId());
+        }
 
         return taskRequest;
     }

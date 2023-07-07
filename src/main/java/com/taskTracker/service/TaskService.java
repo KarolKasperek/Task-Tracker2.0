@@ -45,8 +45,8 @@ public class TaskService {
                 .collect(Collectors.toList());
     }
 
-    public Task getTaskInfo(Long taskId) {
-        Optional<Task> taskOptional = taskRepository.findById(taskId);
-        return taskOptional.orElseThrow(() -> new RuntimeException("task doesn't exist"));
+    public TaskRequest getTaskInfo(Long taskId) {
+        Optional<TaskRequest> taskRequestOptional = Optional.ofNullable(taskMapper.toTaskRequest(taskRepository.findById(taskId).get()));
+        return taskRequestOptional.orElseThrow(() -> new RuntimeException("task does not exist"));
     }
 }

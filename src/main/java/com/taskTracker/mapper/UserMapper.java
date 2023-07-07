@@ -38,11 +38,11 @@ public class UserMapper {
         }
 
         AccountRequest accountRequest = new AccountRequest();
-        accountRequest.setId(accountRequest.getId());
-        accountRequest.setName(accountRequest.getName());
-        accountRequest.setEmail(accountRequest.getEmail());
-        accountRequest.setPassword(accountRequest.getPassword());
-        accountRequest.setRole(accountRequest.getRole());
+        accountRequest.setId(account.getId());
+        accountRequest.setName(account.getName());
+        accountRequest.setEmail(account.getEmail());
+        accountRequest.setPassword(account.getPassword());
+        accountRequest.setRole(account.getRole());
 
         return accountRequest;
     }

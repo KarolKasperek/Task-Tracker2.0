@@ -47,9 +47,9 @@ public class RegisterService implements UserDetailsService {
         return new User(account.getEmail(), account.getPassword(), new ArrayList<>());
     }
 
-    public List<AccountRequest> getAllUsers() {
+    public List<AccountRequest> getAllAccounts() {
         return accountRepository.findAll().stream()
-                .map(userEntity -> userMapper.toAccountRequest(userEntity))
+                .map(accountEntity -> userMapper.toAccountRequest(accountEntity))
                 .collect(Collectors.toList());
     }
 }
