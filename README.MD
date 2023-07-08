@@ -20,3 +20,6 @@ Developed by [Karol Kasperek](https://github.com/KarolKasperek).
 
 ![taskCretingScreenShot](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/479cba58-4b83-493a-ab74-b5476b3a1739)
 *Task creation view*
+
+![membersPageScreenShot](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/1ac31484-c2ac-4f5b-851c-e68331578ea3)
+*Members page with statistics*
