@@ -15,6 +15,7 @@ public class MembersController {
 
     @GetMapping("/members")
     public String getMembersPage(Model model) {
+
         model.addAttribute("taskService", taskService);
         model.addAttribute("accounts", registerService.getAllAccounts());
         return "members";

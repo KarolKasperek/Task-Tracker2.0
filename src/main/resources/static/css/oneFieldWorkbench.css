@@ -1,0 +1,66 @@
+body {
+    background-color: black;
+    background-image: url("/images/workspaceBg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainFrame {
+    border-style: solid;
+    border-radius: 20px;
+    border-color: rgba(255, 255, 255, 0.479);
+    width: 500px;
+    backdrop-filter: blur(10px);
+}
+
+.submitButton {
+    margin: 10px;
+    width: 100px;
+    height: 40px;
+
+    background-color: rgba(0, 0, 0, 0.212);
+    border-style: SOLID;
+    border-color: rgba(255, 255, 255, 0.479);
+    border-radius: 10px;
+
+    font-size: LARGE;
+    font-weight: BOLD;
+
+    color: rgba(255, 255, 255, 0.479);
+
+    transition: 0.4s;
+}
+
+.submitButton:hover {
+    cursor: pointer;
+    color: BLACK;
+    background-color: WHITE;
+}
+
+.dataInput {
+    margin: 10px;
+    width: 400px;
+    height: 40px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.212);
+
+    color: rgba(255, 255, 255, 0.479);
+
+    font-size: LARGE;
+
+    border-style: SOLID;
+    border-color: rgba(255, 255, 255, 0.479);
+    border-radius: 10px;
+}
+label {
+    margin: 10px;
+    font-size: 23px;
+    color: rgba(255, 255, 255, 0.479);
+}

@@ -6,67 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TaskTracker- Share</title>
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
-    <!--TODO separated file-->
-    <style>
-    article {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-    #mainFrame {
-    border-style: solid;
-    border-radius: 20px;
-    border-color: rgba(255, 255, 255, 0.479);
-    width: 500px;
-    backdrop-filter: blur(10px);
-
-
-}
-        .submitButton {
-    margin: 10px;
-    width: 100px;
-    height: 40px;
-
-    background-color: rgba(0, 0, 0, 0.212);
-    border-style: SOLID;
-    border-color: rgba(255, 255, 255, 0.479);
-    border-radius: 10px;
-
-    font-size: LARGE;
-    font-weight: BOLD;
-
-    color: rgba(255, 255, 255, 0.479);
-
-    transition: 0.4s;
-}
-
-.submitButton:hover {
-    cursor: pointer;
-    color: BLACK;
-    background-color: WHITE;
-}
-
-.dataInput {
-    margin: 10px;
-    width: 400px;
-    height: 40px;
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.212);
-
-    color: rgba(255, 255, 255, 0.479);
-
-    font-size: LARGE;
-
-    border-style: SOLID;
-    border-color: rgba(255, 255, 255, 0.479);
-    border-radius: 10px;
-}
-label {
-    margin: 10px;
-    font-size: 23px;
-    color: rgba(255, 255, 255, 0.479);
-}
-    </style>
+    <link rel="stylesheet" href="../static/css/oneFieldWorkbench.css" th:href="@{/css/oneFieldWorkbench.css}"/>
     <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
@@ -85,11 +25,11 @@ label {
 
     <article>
         <div id="mainFrame">
-            <form action="" method="post">
+            <form action="/share" method="post">
                 <h1>&nbsp;Share workbench</h1>
                 <br>
-                <label for="email">To:</label>
-                <input id="email" type="email" name="email" class="dataInput" placeholder="&nbsp;e-mail">
+                <label for="address">To:</label>
+                <input id="address" type="email" name="address" class="dataInput" placeholder="&nbsp;e-mail">
                 <br>
                 <input type="submit" class="submitButton">
             </form>
