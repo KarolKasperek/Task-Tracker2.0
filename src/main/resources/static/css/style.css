@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Faustina:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 * {
     padding: 0;
@@ -40,6 +41,18 @@ ul {
     text-decoration: none;
 }
 
+dl {
+    font-family: 'Roboto Mono', monospace;
+}
+
+dt {
+    font-size: 65px
+}
+
+dd {
+    font-size: 30px
+}
+
 a {
     text-decoration: none;
 }
@@ -63,6 +76,18 @@ a {
 .newTaskBt:hover {
     color: WHITE;
     font-size: 15px;
+}
+
+.columnStats {
+    float: left;
+    margin: 40px;
+}
+
+.verticalSplitLine {
+    transform: rotate(90);
+    transform: translateX(-10px);
+    height: 330px;
+    float: left;
 }
 
 /* navigation bar */

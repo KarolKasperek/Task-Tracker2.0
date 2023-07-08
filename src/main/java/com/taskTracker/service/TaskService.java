@@ -49,4 +49,32 @@ public class TaskService {
         Optional<TaskRequest> taskRequestOptional = Optional.ofNullable(taskMapper.toTaskRequest(taskRepository.findById(taskId).get()));
         return taskRequestOptional.orElseThrow(() -> new RuntimeException("task does not exist"));
     }
+
+    public int getTasksNumber(int userId) {
+        int tasksCounter = 0;
+
+        for (Task task : taskRepository.findAll()) {
+            if (task.getAccount() != null && task.getAccount().getId() == userId) {
+                tasksCounter++;
+            }
+        }
+
+        return tasksCounter;
+    }
+
+    public int getFinishedTasksNumber(int userId) {
+        int finishedTasks = 0;
+
+        for (Task task : taskRepository.findAll()) {
+            if (task.getAccount() != null && task.getAccount().getId() == userId && task.getStatus().equals("done")) {
+                finishedTasks++;
+            }
+        }
+
+        return finishedTasks;
+    }
+
+    public int getActiveTasksNumber(int userId) {
+        return getTasksNumber(userId)-getFinishedTasksNumber(userId);
+    }
 }

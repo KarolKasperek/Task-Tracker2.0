@@ -21,25 +21,17 @@ public class RegisterController {
         return "registration";
     }
 
-    /*@PostMapping("/registered")
-    public String register(RegisterRequest registerRequest, Model model) {
+    @PostMapping("/sign-up")
+    public String addUser(RegisterRequest registerRequest, Model model) {
 
         try {
             registerService.register(registerRequest);
         } catch (IllegalArgumentException e) {
             model.addAttribute("fieldsNotFilledMsg", e.getMessage());
-            return "registration";
         } catch (Exception e) {
             model.addAttribute("registrationErrorMsg", e.getMessage());
-            return "registration";
         }
 
-        return "login";
-    }*/
-
-    @PostMapping("/sign-up")
-    public String addUser(RegisterRequest registerRequest, Model model) {
-        registerService.register(registerRequest);
         return "redirect:/sign-in";
     }
 }

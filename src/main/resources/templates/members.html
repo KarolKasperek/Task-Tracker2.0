@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:task="com.taskTracker.service.TaskService">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -23,5 +23,37 @@
     </script>
     <!--end of Navigation bar-->
     <hr id="navSplitLine">
+
+    <section>
+        <div class="field">
+            <div>
+                <dl>
+                    <div th:each="account : ${accounts}" class= "columnStats">
+                        <hr class="verticalSplitLine">
+                        <dt th:text="${account.name}"></dt>
+                        <dd>
+                            <span>id: </span>
+                            <span th:text="${account.id}"></span>
+                            <br>
+                            <span>role: </span>
+                            <span>user</span>
+                            <br>
+                            <span>e-mail: </span>
+                            <span th:text="${account.email}"></span>
+                            <br>
+                            <span>all tasks: </span>
+                            <span th:text="${taskService.getTasksNumber(account.id)}"></span>
+                            <br>
+                            <span>active tasks: </span>
+                            <span th:text="${taskService.getActiveTasksNumber(account.id)}"></span>
+                            <br>
+                            <span>finished tasks: </span>
+                            <span th:text="${taskService.getFinishedTasksNumber(account.id)}"></span>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

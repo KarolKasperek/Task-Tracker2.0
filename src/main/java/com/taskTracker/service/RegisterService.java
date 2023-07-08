@@ -3,6 +3,7 @@ package com.taskTracker.service;
 import com.taskTracker.dto.RegisterRequest;
 import com.taskTracker.dto.AccountRequest;
 import com.taskTracker.entity.Account;
+import com.taskTracker.entity.Task;
 import com.taskTracker.mapper.UserMapper;
 import com.taskTracker.repo.AccountRepository;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
