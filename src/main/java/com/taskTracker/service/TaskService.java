@@ -54,7 +54,7 @@ public class TaskService {
         int tasksCounter = 0;
 
         for (Task task : taskRepository.findAll()) {
-            if (task.getAccount() != null && task.getAccount().getId() == userId) {
+            if (task.getAccount() != null && task.getAccount().getId() == userId && !task.getStatus().equals("deleted")) {
                 tasksCounter++;
             }
         }
