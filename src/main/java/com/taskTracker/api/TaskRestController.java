@@ -14,15 +14,18 @@ public class TaskRestController {
 
     @GetMapping
     public String getTasks() {
-        // Logika pobierania zadań
-        return "Tasks data";
+
+        StringBuilder stringBuilder = new StringBuilder("Tasks:\n");
+        for (TaskRequest task : taskService.getAllTasks()) {
+            stringBuilder.append(task.getName()).append("\n");
+        }
+        return stringBuilder.toString();
     }
 
     @GetMapping("/{id}")
     public String getTaskDetails(@PathVariable Long id) {
         try {
-            // Logika pobierania szczegółów zadania o podanym ID
-            return "Task details for ID: " + id;
+            return "Task details for ID: " + id + "\n" + taskService.getTaskInfo(id);
         } catch (TaskDoesNotExistException e) {
             return e.getMessage();
         }

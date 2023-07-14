@@ -26,10 +26,8 @@ public class HomeRestController {
         try {
             taskService.addTask(taskRequest);
             return "Task added successfully.";
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | DateTimeException e) {
             return e.getMessage();
-        } catch (DateTimeException d) {
-            return d.getMessage();
         }
     }
 }

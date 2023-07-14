@@ -1,4 +1,4 @@
-package com.taskTracker.config.security;
+package com.taskTracker.config;
 
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

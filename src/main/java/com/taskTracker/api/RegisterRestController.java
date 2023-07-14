@@ -22,8 +22,6 @@ public class RegisterRestController {
         try {
             registerService.register(registerRequest);
             return "User registered successfully.";
-        } catch (IllegalArgumentException e) {
-            return e.getMessage();
         } catch (Exception e) {
             return e.getMessage();
         }
