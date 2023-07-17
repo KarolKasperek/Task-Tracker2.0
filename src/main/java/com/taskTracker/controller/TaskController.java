@@ -1,6 +1,6 @@
 package com.taskTracker.controller;
 
-import com.taskTracker.dto.TaskRequest;
+import com.taskTracker.dto.TaskDto;
 import com.taskTracker.service.RegisterService;
 import com.taskTracker.service.TaskService;
 import com.taskTracker.exception.TaskDoesNotExistException;
@@ -21,9 +21,9 @@ public class TaskController {
     @GetMapping("/task-details")
     public String getTask(@RequestParam(required = false) String status, Model model) {
 
-        TaskRequest taskRequest = new TaskRequest();
-        taskRequest.setStatus(status);
-        model.addAttribute("taskRequest", taskRequest);
+        TaskDto taskDto = new TaskDto();
+        taskDto.setStatus(status);
+        model.addAttribute("taskRequest", taskDto);
         model.addAttribute("accounts", registerService.getAllAccounts());
         return "task";
     }
@@ -43,9 +43,9 @@ public class TaskController {
     }
 
     @PostMapping("/task-details")
-    public String addTask(TaskRequest taskRequest, Model model) {
+    public String addTask(TaskDto taskDto, Model model) {
 
-        taskService.addTask(taskRequest);
+        taskService.addTask(taskDto);
         return "redirect:/";
     }
 

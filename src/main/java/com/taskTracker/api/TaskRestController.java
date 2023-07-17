@@ -1,6 +1,6 @@
 package com.taskTracker.api;
 
-import com.taskTracker.dto.TaskRequest;
+import com.taskTracker.dto.TaskDto;
 import com.taskTracker.service.TaskService;
 import com.taskTracker.exception.TaskDoesNotExistException;
 import lombok.AllArgsConstructor;
@@ -16,7 +16,7 @@ public class TaskRestController {
     public String getTasks() {
 
         StringBuilder stringBuilder = new StringBuilder("Tasks:\n");
-        for (TaskRequest task : taskService.getAllTasks()) {
+        for (TaskDto task : taskService.getAllTasks()) {
             stringBuilder.append(task.getName()).append("\n");
         }
         return stringBuilder.toString();
@@ -32,8 +32,8 @@ public class TaskRestController {
     }
 
     @PostMapping
-    public String addTask(@RequestBody TaskRequest taskRequest) {
-        taskService.addTask(taskRequest);
+    public String addTask(@RequestBody TaskDto taskDto) {
+        taskService.addTask(taskDto);
         return "Task added successfully.";
     }
 }

@@ -1,6 +1,6 @@
 package com.taskTracker.api;
 
-import com.taskTracker.dto.RegisterRequest;
+import com.taskTracker.dto.RegisterDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +17,10 @@ public class RegisterRestController {
     private RegisterService registerService;
 
     @PostMapping
-    public String registerUser(@RequestBody RegisterRequest registerRequest) {
+    public String registerUser(@RequestBody RegisterDto registerDto) {
 
         try {
-            registerService.register(registerRequest);
+            registerService.register(registerDto);
             return "User registered successfully.";
         } catch (Exception e) {
             return e.getMessage();

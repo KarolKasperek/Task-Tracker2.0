@@ -152,7 +152,8 @@ a {
     border-width: 5px;
     border-radius: 10px;
     transform: translateY(30px);
-    width: 400px;
+    width: 98%;
+    min-width: 150px;
     align-self: flex-start; /* Przesunięcie do góry */
 }
 

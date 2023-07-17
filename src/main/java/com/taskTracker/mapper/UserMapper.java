@@ -1,6 +1,6 @@
 package com.taskTracker.mapper;
 
-import com.taskTracker.dto.AccountRequest;
+import com.taskTracker.dto.AccountDto;
 import com.taskTracker.entity.Account;
 import com.taskTracker.enums.ExceptionMessage;
 import com.taskTracker.enums.Role;
@@ -11,39 +11,39 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper {
 
-    public Account toAccount(AccountRequest accountRequest) {
+    public Account toAccount(AccountDto accountDto) {
 
-        if (accountRequest == null) {
+        if (accountDto == null) {
             throw new UserDoesNotExistException(ExceptionMessage.USER_DOES_NOT_EXIST.getExceptionText());
         }
 
         Account account = new Account();
 
-        if (accountRequest.getId() != null) {
-            account.setId(accountRequest.getId());
+        if (accountDto.getId() != null) {
+            account.setId(accountDto.getId());
         }
 
-        account.setName(accountRequest.getName());
-        account.setEmail(accountRequest.getEmail());
-        account.setPassword(new BCryptPasswordEncoder().encode(accountRequest.getPassword()));
+        account.setName(accountDto.getName());
+        account.setEmail(accountDto.getEmail());
+        account.setPassword(new BCryptPasswordEncoder().encode(accountDto.getPassword()));
         account.setRole(Role.USER);
 
         return account;
     }
 
-    public AccountRequest toAccountRequest(Account account) {
+    public AccountDto toAccountRequest(Account account) {
 
         if (account == null) {
             throw new UserDoesNotExistException(ExceptionMessage.USER_DOES_NOT_EXIST.getExceptionText());
         }
 
-        AccountRequest accountRequest = new AccountRequest();
-        accountRequest.setId(account.getId());
-        accountRequest.setName(account.getName());
-        accountRequest.setEmail(account.getEmail());
-        accountRequest.setPassword(account.getPassword());
-        accountRequest.setRole(account.getRole());
+        AccountDto accountDto = new AccountDto();
+        accountDto.setId(account.getId());
+        accountDto.setName(account.getName());
+        accountDto.setEmail(account.getEmail());
+        accountDto.setPassword(account.getPassword());
+        accountDto.setRole(account.getRole());
 
-        return accountRequest;
+        return accountDto;
     }
 }

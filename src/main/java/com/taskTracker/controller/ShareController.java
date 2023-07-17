@@ -1,8 +1,9 @@
 package com.taskTracker.controller;
 
+import com.lowagie.text.Document;
+import com.lowagie.text.pdf.PdfWriter;
 import com.taskTracker.service.EmailService;
 import lombok.AllArgsConstructor;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
+import java.io.*;
+import java.util.Properties;
 
 @Controller
 @AllArgsConstructor
@@ -31,49 +30,27 @@ public class ShareController {
 
         model.addAttribute("address", address);
 
-        // Load the HTML content from index.html
-
-//        ClassPathResource resource = new ClassPathResource("/");
-//        File htmlFile = resource.getFile();
-//        String htmlString = new String(Files.readAllBytes(htmlFile.toPath()));
-//        String outputPath = "output.pdf";
-//
-//        // Generate pdf file with workbench
-//
-//        try (OutputStream outputStream = new FileOutputStream(outputPath)) {
-//            ITextRenderer renderer = new ITextRenderer();
-//            renderer.setDocumentFromString(htmlString);
-//            renderer.layout();
-//            renderer.createPDF(outputStream);
-//            renderer.finishPDF();
-//        } catch (Exception e) {
-//            throw new Exception("Failed to create PDF: " + e.getMessage());
-//        }
-//
-//        // Send email on submitted address
-//
-//        emailService.sendEmailWithAttachment(address, "output.pdf");
-
-        // Load the HTML content from index.html
-        String htmlString = "<html><body><h1>Hello, World!</h1></body></html>";
-        String outputPath = "output.pdf";
-
-        // Generate pdf file with workbench
-        try (OutputStream outputStream = new FileOutputStream(outputPath)) {
-            ITextRenderer renderer = new ITextRenderer();
-            renderer.setDocumentFromString(htmlString);
-            renderer.layout();
-            renderer.createPDF(outputStream);
-            renderer.finishPDF();
-
-            System.out.println("PDF created successfully!");
-        } catch (Exception e) {
-            System.err.println("Failed to create PDF: " + e.getMessage());
-        }
-
-        // Send email on submitted address
-        emailService.sendEmailWithAttachment(address, "output.pdf");
+//        convertHtmlToPdf("src/main/resources/templates/index.html", "workbench.pdf");
+        emailService.sendEmailWithAttachment(address, "workbench.pdf");
+        emailService.sendEmail(address, "title", "somethingwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
 
         return "share";
+    }
+
+    public static void convertHtmlToPdf(String htmlFilePath, String outputPdfFilePath) {
+
+        try {
+            Document document = new Document();
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(outputPdfFilePath));
+            document.open();
+
+            ITextRenderer renderer = new ITextRenderer();
+            renderer.setDocument(htmlFilePath);
+            renderer.layout();
+            renderer.createPDF(writer.getDirectContent().getInternalBuffer(), true);
+            document.close();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create PDF: " + e.getMessage());
+        }
     }
 }

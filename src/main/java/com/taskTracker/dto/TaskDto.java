@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskRequest {
+public class TaskDto {
     private Long id;
 
     @NotEmpty(message = "Do not forget about task name!")

@@ -1,6 +1,6 @@
 package com.taskTracker.controller;
 
-import com.taskTracker.dto.TaskRequest;
+import com.taskTracker.dto.TaskDto;
 import com.taskTracker.service.TaskService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -21,7 +21,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String getHome(Model model) {
-        List<TaskRequest> taskList = taskService.getAllTasks();
+        List<TaskDto> taskList = taskService.getAllTasks();
 
         model.addAttribute("taskList", taskList);
         getTaskRequest(model);
@@ -30,22 +30,22 @@ public class HomeController {
     }
 
     public String getTaskRequest(Model model) {
-        TaskRequest taskRequest = new TaskRequest();
+        TaskDto taskDto = new TaskDto();
 
-        model.addAttribute("taskRequest", taskRequest);
+        model.addAttribute("taskRequest", taskDto);
 
         return "index";
     }
 
     @PostMapping
-    public String processAddingTask(@Valid @ModelAttribute("taskRequest") TaskRequest taskRequest, BindingResult bindingResult, Model model) {
+    public String processAddingTask(@Valid @ModelAttribute("taskRequest") TaskDto taskDto, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
             return "index";
         } else {
 
             try {
-                taskService.addTask(taskRequest);
+                taskService.addTask(taskDto);
             } catch (IllegalArgumentException e) {
                 model.addAttribute("fieldsNotFilledMsg", e.getMessage());
                 return "index";

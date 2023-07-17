@@ -1,6 +1,6 @@
 package com.taskTracker.api;
 
-import com.taskTracker.dto.TaskRequest;
+import com.taskTracker.dto.TaskDto;
 import com.taskTracker.exception.TaskDoesNotExistException;
 import com.taskTracker.service.TaskService;
 import org.junit.jupiter.api.Test;
@@ -62,13 +62,13 @@ class TaskRestControllerTest {
     @Test
     void addTask_ValidTask_ReturnsSuccessMessage() {
         // given
-        TaskRequest taskRequest = new TaskRequest();
+        TaskDto taskDto = new TaskDto();
 
         // when
-        String result = taskRestController.addTask(taskRequest);
+        String result = taskRestController.addTask(taskDto);
 
         // then
         assertEquals("Task added successfully.", result);
-        verify(taskService, times(1)).addTask(taskRequest);
+        verify(taskService, times(1)).addTask(taskDto);
     }
 }

@@ -18,8 +18,8 @@
                 <div class="field">
                     <label class="required">Task name</label>
                     <div>
-                        <input th:field="${taskRequest.name}" class="dataInput">
-                        <div th:if="${#fields.hasErrors('taskRequest.name')}" th:errors="${taskRequest.name}" class="error">Name Error</div>
+                        <input th:field="${taskDto.name}" class="dataInput">
+                        <div th:if="${#fields.hasErrors('taskDto.name')}" th:errors="${taskDto.name}" class="error">Name Error</div>
                     </div>
                 </div>
                 <br>
@@ -27,12 +27,12 @@
                 <div class="field">
                     <label>Status</label>
                     <div>
-                        <select th:field="${taskRequest.status}" class="optionPane">
-                            <option value="toDo" th:selected="${taskRequest.status == null or taskRequest.status == 'toDo'}">To do</option>
-                            <option value="inProgress" th:selected="${taskRequest.status == 'inProgress'}">In progress</option>
-                            <option value="inReview" th:selected="${taskRequest.status == 'inReview'}">In review</option>
-                            <option value="done" th:selected="${taskRequest.status == 'done'}">Done</option>
-                            <option value="deleted" th:selected="${taskRequest.status == 'delete'}" id="deleteOption">delete</option>
+                        <select th:field="${taskDto.status}" class="optionPane">
+                            <option value="toDo" th:selected="${taskDto.status == null or taskDto.status == 'toDo'}">To do</option>
+                            <option value="inProgress" th:selected="${taskDto.status == 'inProgress'}">In progress</option>
+                            <option value="inReview" th:selected="${taskDto.status == 'inReview'}">In review</option>
+                            <option value="done" th:selected="${taskDto.status == 'done'}">Done</option>
+                            <option value="deleted" th:selected="${taskDto.status == 'delete'}" id="deleteOption">delete</option>
                         </select>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                 <div class="field">
                     <label for="description">Description</label>
                     <div>
-                        <textarea th:field="${taskRequest.description}" id="description" class="dataInput"></textarea>
+                        <textarea th:field="${taskDto.description}" id="description" class="dataInput"></textarea>
                     </div>
                 </div>
                 <br>
@@ -49,7 +49,7 @@
                 <div class="field">
                     <label for="deadline">Deadline</label>
                     <div>
-                        <input th:field="${taskRequest.deadline}" type="date" id="deadline" class="dateInput">
+                        <input th:field="${taskDto.deadline}" type="date" id="deadline" class="dateInput">
                     </div>
                     <div th:text="${invalidDateMessage}" class="error">error</div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="field">
                     <label for="accounts">User</label>
                     <div>
-                        <select th:field="${taskRequest.accountId}" name="accounts" id="accounts" class="optionPane">
+                        <select th:field="${taskDto.accountId}" name="accounts" id="accounts" class="optionPane">
                             <option value="">Unassigned</option>
                             <div th:each="account:${accounts}">
                                 <label th:text="${account.name}"></label>
@@ -69,7 +69,7 @@
                 </div>
                 <br>
 
-                <input type="hidden" name="id" th:value="${taskRequest.id}">
+                <input type="hidden" name="id" th:value="${taskDto.id}">
 
                 <div class="submit-container">
                     <input class="submitButton" type="submit" value="Save">

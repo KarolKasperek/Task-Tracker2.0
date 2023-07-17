@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountRequest {
+public class AccountDto {
     private Long id;
     @NotNull(message = "username should not be null!")
     private String name;

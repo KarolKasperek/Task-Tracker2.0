@@ -31,7 +31,7 @@ public class Account {
     private Role role;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
-    private List<Task> taskList;
+    private List<Task> taskList; //todo projectList
 
 
     public Account(String name, String email, String password) {

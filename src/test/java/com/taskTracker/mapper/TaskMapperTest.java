@@ -1,6 +1,6 @@
 package com.taskTracker.mapper;
 
-import com.taskTracker.dto.TaskRequest;
+import com.taskTracker.dto.TaskDto;
 import com.taskTracker.entity.Task;
 import com.taskTracker.exception.TaskDoesNotExistException;
 import com.taskTracker.repo.AccountRepository;
@@ -31,36 +31,36 @@ class TaskMapperTest {
     @Test
     void toTaskEntity_WithValidTaskRequest_ReturnsTaskEntity() {
         // given
-        TaskRequest taskRequest = new TaskRequest();
-        taskRequest.setId(1L);
-        taskRequest.setName("Task 1");
-        taskRequest.setDescription("Description");
-        taskRequest.setStatus("In Progress");
-        taskRequest.setDeadline(LocalDate.now().plusDays(7));
-        taskRequest.setStartDate(LocalDate.now());
+        TaskDto taskDto = new TaskDto();
+        taskDto.setId(1L);
+        taskDto.setName("Task 1");
+        taskDto.setDescription("Description");
+        taskDto.setStatus("In Progress");
+        taskDto.setDeadline(LocalDate.now().plusDays(7));
+        taskDto.setStartDate(LocalDate.now());
 
         when(accountRepository.findById(1L)).thenReturn(Optional.ofNullable(null));
 
         // when
-        Task task = taskMapper.toTaskEntity(taskRequest);
+        Task task = taskMapper.toTaskEntity(taskDto);
 
         // then
         assertNotNull(task);
-        assertEquals(taskRequest.getId(), task.getId());
-        assertEquals(taskRequest.getName(), task.getName());
-        assertEquals(taskRequest.getDescription(), task.getDescription());
-        assertEquals(taskRequest.getStatus(), task.getStatus());
-        assertEquals(taskRequest.getDeadline(), task.getDeadline());
-        assertEquals(taskRequest.getStartDate(), task.getStartDate());
+        assertEquals(taskDto.getId(), task.getId());
+        assertEquals(taskDto.getName(), task.getName());
+        assertEquals(taskDto.getDescription(), task.getDescription());
+        assertEquals(taskDto.getStatus(), task.getStatus());
+        assertEquals(taskDto.getDeadline(), task.getDeadline());
+        assertEquals(taskDto.getStartDate(), task.getStartDate());
     }
 
     @Test
     void toTaskEntity_WithNullTaskRequest_ThrowsTaskDoesNotExistException() {
         // Arrange
-        TaskRequest taskRequest = null;
+        TaskDto taskDto = null;
 
         // Act & Assert
-        assertThrows(TaskDoesNotExistException.class, () -> taskMapper.toTaskEntity(taskRequest));
+        assertThrows(TaskDoesNotExistException.class, () -> taskMapper.toTaskEntity(taskDto));
     }
 
     @Test
@@ -77,17 +77,17 @@ class TaskMapperTest {
         when(accountRepository.findById(1L)).thenReturn(Optional.ofNullable(null)); // Możesz dostosować to zachowanie do potrzeb testu
 
         // Act
-        TaskRequest taskRequest = taskMapper.toTaskRequest(task);
+        TaskDto taskDto = taskMapper.toTaskRequest(task);
 
         // Assert
-        assertNotNull(taskRequest);
-        assertEquals(task.getId(), taskRequest.getId());
-        assertEquals(task.getName(), taskRequest.getName());
-        assertEquals(task.getDescription(), taskRequest.getDescription());
-        assertEquals(task.getStatus(), taskRequest.getStatus());
-        assertEquals(task.getDeadline(), taskRequest.getDeadline());
-        assertEquals(task.getStartDate(), taskRequest.getStartDate());
-        assertNull(taskRequest.getAccountId());
+        assertNotNull(taskDto);
+        assertEquals(task.getId(), taskDto.getId());
+        assertEquals(task.getName(), taskDto.getName());
+        assertEquals(task.getDescription(), taskDto.getDescription());
+        assertEquals(task.getStatus(), taskDto.getStatus());
+        assertEquals(task.getDeadline(), taskDto.getDeadline());
+        assertEquals(task.getStartDate(), taskDto.getStartDate());
+        assertNull(taskDto.getAccountId());
 
         verify(accountRepository, times(0)).findById(anyLong()); // W tym teście nie wywołujemy findById, więc sprawdzamy, czy nie zostało wywołane
     }

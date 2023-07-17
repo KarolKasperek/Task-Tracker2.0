@@ -1,6 +1,6 @@
 package com.taskTracker.api;
 
-import com.taskTracker.dto.RegisterRequest;
+import com.taskTracker.dto.RegisterDto;
 import com.taskTracker.service.RegisterService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -25,32 +25,32 @@ class RegisterRestControllerTest {
     @Test
     void registerUser_ValidRequest_ReturnsSuccessMessage() {
         // given
-        RegisterRequest registerRequest = new RegisterRequest();
-        registerRequest.setName("testuser");
-        registerRequest.setPassword("password");
+        RegisterDto registerDto = new RegisterDto();
+        registerDto.setName("testuser");
+        registerDto.setPassword("password");
 
         // when
-        String result = registerRestController.registerUser(registerRequest);
+        String result = registerRestController.registerUser(registerDto);
 
         // then
         assertEquals("User registered successfully.", result);
-        verify(registerService, times(1)).register(registerRequest);
+        verify(registerService, times(1)).register(registerDto);
     }
 
     @Test
     void registerUser_ExceptionThrown_ReturnsErrorMessage() {
         // given
-        RegisterRequest registerRequest = new RegisterRequest();
-        registerRequest.setName("testuser");
-        registerRequest.setPassword("password");
+        RegisterDto registerDto = new RegisterDto();
+        registerDto.setName("testuser");
+        registerDto.setPassword("password");
 
-        doThrow(new RuntimeException("Registration failed.")).when(registerService).register(registerRequest);
+        doThrow(new RuntimeException("Registration failed.")).when(registerService).register(registerDto);
 
         // when
-        String result = registerRestController.registerUser(registerRequest);
+        String result = registerRestController.registerUser(registerDto);
 
         // then
         assertEquals("Registration failed.", result);
-        verify(registerService, times(1)).register(registerRequest);
+        verify(registerService, times(1)).register(registerDto);
     }
 }

@@ -1,6 +1,6 @@
 package com.taskTracker.service;
 
-import com.taskTracker.dto.RegisterRequest;
+import com.taskTracker.dto.RegisterDto;
 import com.taskTracker.mapper.UserMapper;
 import com.taskTracker.repo.AccountRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -25,13 +25,13 @@ public class RegisterServiceTest {
     @DisplayName("Check if the user is registered properly")
     void register() {
         // given
-        RegisterRequest registerRequest = new RegisterRequest();
-        registerRequest.setName("Zoe");
-        registerRequest.setEmail("zoeRose@gmail.com");
-        registerRequest.setPassword("haslo1234");
-        registerRequest.setPasswordRepetition("haslo1234");
+        RegisterDto registerDto = new RegisterDto();
+        registerDto.setName("Zoe");
+        registerDto.setEmail("zoeRose@gmail.com");
+        registerDto.setPassword("haslo1234");
+        registerDto.setPasswordRepetition("haslo1234");
         // when
-        registerService.register(registerRequest);
+        registerService.register(registerDto);
 
         // then
         assertTrue(accountRepository.existsByEmail("zoeRose@gmail.com"));

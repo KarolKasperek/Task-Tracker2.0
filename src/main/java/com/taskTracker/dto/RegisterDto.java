@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RegisterRequest {
+public class RegisterDto {
 
     private String name;
     private String email;

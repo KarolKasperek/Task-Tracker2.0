@@ -1,6 +1,6 @@
 package com.taskTracker.controller;
 
-import com.taskTracker.dto.TaskRequest;
+import com.taskTracker.dto.TaskDto;
 import com.taskTracker.service.TaskService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,8 +31,8 @@ class HomeControllerTest {
 
     @Test
     void testGetHome() {
-        List<TaskRequest> taskList = new ArrayList<>();
-        taskList.add(new TaskRequest());
+        List<TaskDto> taskList = new ArrayList<>();
+        taskList.add(new TaskDto());
         when(taskService.getAllTasks()).thenReturn(taskList);
 
         Model model = mock(Model.class);
@@ -49,68 +49,68 @@ class HomeControllerTest {
         String viewName = homeController.getTaskRequest(model);
 
         assertEquals("index", viewName);
-        verify(model).addAttribute(eq("taskRequest"), any(TaskRequest.class));
+        verify(model).addAttribute(eq("taskRequest"), any(TaskDto.class));
     }
 
     @Test
     void testProcessAddingTaskWithValidTaskRequest() {
-        TaskRequest taskRequest = new TaskRequest();
+        TaskDto taskDto = new TaskDto();
         BindingResult bindingResult = mock(BindingResult.class);
         Model model = mock(Model.class);
 
-        String viewName = homeController.processAddingTask(taskRequest, bindingResult, model);
+        String viewName = homeController.processAddingTask(taskDto, bindingResult, model);
 
         assertEquals("redirect:/", viewName);
-        verify(taskService).addTask(taskRequest);
+        verify(taskService).addTask(taskDto);
         verify(model, never()).addAttribute(eq("fieldsNotFilledMsg"), anyString());
         verify(model, never()).addAttribute(eq("invalidDateMsg"), anyString());
     }
 
     @Test
     void testProcessAddingTaskWithInvalidTaskRequest() {
-        TaskRequest taskRequest = new TaskRequest();
+        TaskDto taskDto = new TaskDto();
         BindingResult bindingResult = mock(BindingResult.class);
         when(bindingResult.hasErrors()).thenReturn(true);
         Model model = mock(Model.class);
 
-        String viewName = homeController.processAddingTask(taskRequest, bindingResult, model);
+        String viewName = homeController.processAddingTask(taskDto, bindingResult, model);
 
         assertEquals("index", viewName);
-        verify(taskService, never()).addTask(taskRequest);
+        verify(taskService, never()).addTask(taskDto);
         verify(model, never()).addAttribute(eq("fieldsNotFilledMsg"), anyString());
         verify(model, never()).addAttribute(eq("invalidDateMsg"), anyString());
     }
 
     @Test
     void testProcessAddingTaskWithIllegalArgumentException() {
-        TaskRequest taskRequest = new TaskRequest();
+        TaskDto taskDto = new TaskDto();
         BindingResult bindingResult = mock(BindingResult.class);
         Model model = mock(Model.class);
 
         String errorMsg = "Some error message";
-        doThrow(new IllegalArgumentException(errorMsg)).when(taskService).addTask(taskRequest);
+        doThrow(new IllegalArgumentException(errorMsg)).when(taskService).addTask(taskDto);
 
-        String viewName = homeController.processAddingTask(taskRequest, bindingResult, model);
+        String viewName = homeController.processAddingTask(taskDto, bindingResult, model);
 
         assertEquals("index", viewName);
-        verify(taskService).addTask(taskRequest);
+        verify(taskService).addTask(taskDto);
         verify(model).addAttribute("fieldsNotFilledMsg", errorMsg);
         verify(model, never()).addAttribute(eq("invalidDateMsg"), anyString());
     }
 
     @Test
     void testProcessAddingTaskWithDateTimeException() {
-        TaskRequest taskRequest = new TaskRequest();
+        TaskDto taskDto = new TaskDto();
         BindingResult bindingResult = mock(BindingResult.class);
         Model model = mock(Model.class);
 
         String errorMsg = "Invalid date";
-        doThrow(new DateTimeException(errorMsg)).when(taskService).addTask(taskRequest);
+        doThrow(new DateTimeException(errorMsg)).when(taskService).addTask(taskDto);
 
-        String viewName = homeController.processAddingTask(taskRequest, bindingResult, model);
+        String viewName = homeController.processAddingTask(taskDto, bindingResult, model);
 
         assertEquals("index", viewName);
-        verify(taskService).addTask(taskRequest);
+        verify(taskService).addTask(taskDto);
         verify(model, never()).addAttribute(eq("fieldsNotFilledMsg"), anyString());
         verify(model).addAttribute("invalidDateMsg", errorMsg);
     }

@@ -1,6 +1,6 @@
 package com.taskTracker.api;
 
-import com.taskTracker.dto.TaskRequest;
+import com.taskTracker.dto.TaskDto;
 import com.taskTracker.service.TaskService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,11 +36,11 @@ class HomeRestControllerTest {
     @Test
     void getTasks_ReturnsListOfTasks() {
         // given
-        List<TaskRequest> expectedTasks = new ArrayList<>();
+        List<TaskDto> expectedTasks = new ArrayList<>();
         when(taskService.getAllTasks()).thenReturn(expectedTasks);
 
         // when
-        List<TaskRequest> result = homeRestController.getTasks();
+        List<TaskDto> result = homeRestController.getTasks();
 
         // then
         assertEquals(expectedTasks, result);
@@ -50,32 +50,32 @@ class HomeRestControllerTest {
     @Test
     void addTask_ValidTask_ReturnsSuccessMessage() {
         // given
-        TaskRequest taskRequest = new TaskRequest();
-        taskRequest.setName("Test task");
-        taskRequest.setDescription("Test description");
+        TaskDto taskDto = new TaskDto();
+        taskDto.setName("Test task");
+        taskDto.setDescription("Test description");
 
         // when
-        String result = homeRestController.addTask(taskRequest);
+        String result = homeRestController.addTask(taskDto);
 
         // then
         assertEquals("Task added successfully.", result);
-        verify(taskService, times(1)).addTask(taskRequest);
+        verify(taskService, times(1)).addTask(taskDto);
     }
 
     @Test
     void addTask_ThrowsDateTimeException_ReturnsErrorMessage() {
         // given
-        TaskRequest taskRequest = new TaskRequest();
-        taskRequest.setName("Test task");
-        taskRequest.setDescription("Test description");
+        TaskDto taskDto = new TaskDto();
+        taskDto.setName("Test task");
+        taskDto.setDescription("Test description");
 
-        doThrow(new DateTimeException("Invalid date")).when(taskService).addTask(taskRequest);
+        doThrow(new DateTimeException("Invalid date")).when(taskService).addTask(taskDto);
 
         // when
-        String result = homeRestController.addTask(taskRequest);
+        String result = homeRestController.addTask(taskDto);
 
         // then
         assertEquals("Invalid date", result);
-        verify(taskService, times(1)).addTask(taskRequest);
+        verify(taskService, times(1)).addTask(taskDto);
     }
 }

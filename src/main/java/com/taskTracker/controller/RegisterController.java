@@ -1,6 +1,6 @@
 package com.taskTracker.controller;
 
-import com.taskTracker.dto.RegisterRequest;
+import com.taskTracker.dto.RegisterDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,16 +16,16 @@ public class RegisterController {
 
     @GetMapping("/sign-up")
     public String getRegistration(Model model) {
-        RegisterRequest registerRequest = new RegisterRequest();
-        model.addAttribute("registerRequest", registerRequest);
+        RegisterDto registerDto = new RegisterDto();
+        model.addAttribute("registerRequest", registerDto);
         return "registration";
     }
 
     @PostMapping("/sign-up")
-    public String addUser(RegisterRequest registerRequest, Model model) {
+    public String addUser(RegisterDto registerDto, Model model) {
 
         try {
-            registerService.register(registerRequest);
+            registerService.register(registerDto);
         } catch (IllegalArgumentException e) {
             model.addAttribute("fieldsNotFilledMsg", e.getMessage());
         } catch (Exception e) {
