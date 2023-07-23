@@ -1,18 +1,11 @@
 package com.taskTracker.mapper;
 
 import com.taskTracker.dto.ProjectDto;
-import com.taskTracker.dto.TaskDto;
 import com.taskTracker.entity.Project;
-import com.taskTracker.entity.Task;
 import com.taskTracker.exception.TaskDoesNotExistException;
-import com.taskTracker.repo.AccountRepository;
-import com.taskTracker.repo.ProjectRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
@@ -23,7 +16,7 @@ public class ProjectMapper {
     public Project toProjectEntity(ProjectDto projectDto) {
 
         if (projectDto == null) {
-            throw new TaskDoesNotExistException("Task does not exist!");
+            throw new TaskDoesNotExistException("Project does not exist!");
         }
 
         Project project = new Project();
@@ -42,7 +35,7 @@ public class ProjectMapper {
     public ProjectDto toProjectDto(Project project) {
 
         if (project == null) {
-            throw new TaskDoesNotExistException("Task does not exist!");
+            throw new TaskDoesNotExistException("Project does not exist!");
         }
 
         ProjectDto projectDto = new ProjectDto();
