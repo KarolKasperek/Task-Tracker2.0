@@ -20,7 +20,7 @@ import java.nio.file.Paths;
 public class EmailService {
 
     @Autowired
-    private JavaMailSender javaMailSender;
+    private final JavaMailSender javaMailSender;
 
     public void sendEmailWithAttachment(String to, String filePath)
             throws IOException, MessagingException {
