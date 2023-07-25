@@ -23,7 +23,7 @@ public class TaskController {
 
         TaskDto taskDto = new TaskDto();
         taskDto.setStatus(status);
-        model.addAttribute("taskRequest", taskDto);
+        model.addAttribute("taskDto", taskDto);
         model.addAttribute("accounts", registerService.getAllAccounts());
         return "task";
     }
@@ -34,7 +34,7 @@ public class TaskController {
         addUsersAttribute(model);
         model.addAttribute("accounts", registerService.getAllAccounts());
         try {
-            model.addAttribute("taskRequest", taskService.getTaskInfo(id));
+            model.addAttribute("taskDto", taskService.getTaskInfo(id));
         } catch (TaskDoesNotExistException e) {
             model.addAttribute("noTaskMessage", e.getMessage());
         }
