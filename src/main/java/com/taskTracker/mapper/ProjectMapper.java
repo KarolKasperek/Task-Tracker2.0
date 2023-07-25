@@ -1,6 +1,7 @@
 package com.taskTracker.mapper;
 
 import com.taskTracker.dto.ProjectDto;
+import com.taskTracker.dto.TaskDto;
 import com.taskTracker.entity.Project;
 import com.taskTracker.exception.TaskDoesNotExistException;
 import lombok.AllArgsConstructor;
@@ -11,7 +12,6 @@ import java.util.stream.Collectors;
 @Component
 @AllArgsConstructor
 public class ProjectMapper {
-    private TaskMapper taskMapper;
 
     public Project toProjectEntity(ProjectDto projectDto) {
 
@@ -26,8 +26,8 @@ public class ProjectMapper {
         }
 
         project.setName(projectDto.getName());
-        project.setTaskList(projectDto.getTaskDtoList().stream()
-                .map(taskDto -> taskMapper.toTaskEntity(taskDto))
+        project.setTaskIds(projectDto.getTaskDtoList().stream()
+                .map(TaskDto::getId)
                 .collect(Collectors.toList()));
         return project;
     }

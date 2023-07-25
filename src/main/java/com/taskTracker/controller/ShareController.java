@@ -30,9 +30,8 @@ public class ShareController {
 
         model.addAttribute("address", address);
 
-//        convertHtmlToPdf("src/main/resources/templates/index.html", "workbench.pdf");
-//        emailService.sendEmailWithAttachment(address, "workbench.pdf");
-        emailService.sendEmail(address, "title", "somethingwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+        convertHtmlToPdf("src/main/resources/templates/index.html", "workbench.pdf");
+        emailService.sendEmailWithAttachment(address, "workbench.pdf");
 
         return "share";
     }

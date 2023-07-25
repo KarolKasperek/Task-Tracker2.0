@@ -18,5 +18,5 @@ public class Project {
     @Id
     private int id;
     private String name;
-    private List<Task> taskList;
+    private List<Long> taskIds;
 }
