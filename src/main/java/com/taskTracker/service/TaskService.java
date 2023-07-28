@@ -42,6 +42,7 @@ public class TaskService {
     public List<TaskDto> getAllTasks() {
         return taskRepository.findAll().stream()
                 .map(task -> taskMapper.toTaskRequest(task))
+                .filter(task -> !task.getStatus().equals("archived"))
                 .collect(Collectors.toList());
     }
 
@@ -76,5 +77,17 @@ public class TaskService {
 
     public int getActiveTasksNumber(int userId) {
         return getTasksNumber(userId)-getFinishedTasksNumber(userId);
+    }
+
+    public void setTaskStatus(Long id, String status) {
+        if (taskRepository.findById(id).isPresent()) {
+            Task task = taskRepository.findById(id).get();
+            task.setStatus(status);
+            taskRepository.save(task);
+        }
+    }
+
+    public Task getTask(Long taskId) {
+        return taskRepository.findById(taskId).get();
     }
 }

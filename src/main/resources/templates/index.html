@@ -33,6 +33,7 @@
                     <a th:href="@{'/edit/' + ${task.id}}">
                         <li th:text="${task.name}" class="pointer"></li>
                     </a>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
             <a href="/task-details?status=toDo"><p class="newTaskBt">➕ Add a card</p></a>
@@ -45,6 +46,7 @@
                     <a th:href="@{'/edit/' + ${task.id}}">
                         <li th:text="${task.name}" class="pointer"></li>
                     </a>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
             <a href="/task-details?status=inProgress"><p class="newTaskBt">➕ Add a card</p></a>
@@ -57,6 +59,7 @@
                     <a th:href="@{'/edit/' + ${task.id}}">
                         <li th:text="${task.name}" class="pointer"></li>
                     </a>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
             <a href="/task-details?status=inReview"><p class="newTaskBt">➕ Add a card</p></a>
@@ -69,6 +72,7 @@
                     <a th:href="@{'/edit/' + ${task.id}}">
                         <li th:text="${task.name}" class="pointer"></li>
                     </a>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
             <a href="/task-details?status=done"><p class="newTaskBt">➕ Add a card</p></a>

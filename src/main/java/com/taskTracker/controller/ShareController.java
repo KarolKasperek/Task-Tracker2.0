@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import java.io.*;
-import java.util.Properties;
 
 @Controller
 @AllArgsConstructor
@@ -30,13 +29,12 @@ public class ShareController {
 
         model.addAttribute("address", address);
 
-        convertHtmlToPdf("src/main/resources/templates/index.html", "workbench.pdf");
-        emailService.sendEmailWithAttachment(address, "workbench.pdf");
+        emailService.sendEmailWithWorkbench(address);
 
         return "share";
     }
 
-    public static void convertHtmlToPdf(String htmlFilePath, String outputPdfFilePath) {
+    private void convertHtmlToPdf(String htmlFilePath, String outputPdfFilePath) { //todo: application send workbench in .pdf file
 
         try {
             Document document = new Document();

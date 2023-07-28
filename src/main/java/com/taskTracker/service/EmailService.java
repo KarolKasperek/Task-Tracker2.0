@@ -1,8 +1,10 @@
 package com.taskTracker.service;
 
+import com.taskTracker.dto.TaskDto;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.SimpleMailMessage;
@@ -17,10 +19,10 @@ import java.nio.file.Paths;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class EmailService {
-
-    @Autowired
     private final JavaMailSender javaMailSender;
+    private final TaskService taskService;
 
     public void sendEmailWithAttachment(String to, String filePath)
             throws IOException, MessagingException {
@@ -50,5 +52,17 @@ public class EmailService {
         mailMessage.setText(message);
         mailMessage.setFrom("x90063232@gmail.com");
         javaMailSender.send(mailMessage);
+    }
+
+    public void sendEmailWithWorkbench(String address) {
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(address);
+        mailMessage.setSubject("Workbench");
+        mailMessage.setText(String.valueOf(taskService.getAllTasks()));
+        mailMessage.setFrom("x90063232@gmail.com");
+        javaMailSender.send(mailMessage);
+
+        log.info("Workbench shared!");
     }
 }

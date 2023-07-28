@@ -7,10 +7,7 @@ import com.taskTracker.exception.TaskDoesNotExistException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
@@ -28,6 +25,13 @@ public class TaskController {
         return "task";
     }
 
+    @PostMapping("/task-details")
+    public String addTask(TaskDto taskDto, Model model) {
+
+        taskService.addTask(taskDto);
+        return "redirect:/";
+    }
+
     @GetMapping("/edit/{id}")
     public String getTaskDetails(@PathVariable Long id, Model model) {
 
@@ -42,10 +46,24 @@ public class TaskController {
         return "task";
     }
 
-    @PostMapping("/task-details")
-    public String addTask(TaskDto taskDto, Model model) {
+    @GetMapping("/changeStatus/{id}") //todo
+    public String changeTaskStatus(@PathVariable("id") Long taskId) {
+        System.out.println("OTO STATUS TASKA:"+taskService.getTask(taskId).getStatus());
+        switch (taskService.getTask(taskId).getStatus()) {
+            case "toDo" -> taskService.setTaskStatus(taskId, "inProgress");
+            case "inProgress" -> taskService.setTaskStatus(taskId, "inReview");
+            case "inReview" -> taskService.setTaskStatus(taskId, "done");
+            case "done" -> taskService.setTaskStatus(taskId, "archived");
+        }
 
-        taskService.addTask(taskDto);
+        return "redirect:/";
+    }
+
+    @GetMapping("/archive/{id}")
+    public String archiveTask(@PathVariable("id") Long taskId) {
+
+        taskService.setTaskStatus(taskId, "archived");
+
         return "redirect:/";
     }
 

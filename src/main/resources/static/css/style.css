@@ -166,3 +166,22 @@ a {
 .status-card p {
     font-family: 'Roboto Condensed', sans-serif;
 }
+
+.pointer:hover {
+    color: WHITE
+}
+
+.quickEditOption {
+
+}
+
+.quickEditOption:hover {
+    color: WHITE;
+    cursor: default;
+}
+
+.quickEditOptionPlaceHolder {
+    cursor: default;
+    transform: translateY(-20px);
+    height: 15px;
+}
