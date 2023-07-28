@@ -4,6 +4,7 @@ import com.taskTracker.dto.TaskDto;
 import com.taskTracker.service.TaskService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.DateTimeException;
@@ -21,6 +22,7 @@ public class HomeRestController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.OK)
     public String addTask(@Valid @RequestBody TaskDto taskDto) {
 
         try {

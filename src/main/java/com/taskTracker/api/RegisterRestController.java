@@ -2,10 +2,8 @@ package com.taskTracker.api;
 
 import com.taskTracker.dto.RegisterDto;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import com.taskTracker.service.RegisterService;
 
@@ -17,6 +15,7 @@ public class RegisterRestController {
     private RegisterService registerService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public String registerUser(@RequestBody RegisterDto registerDto) {
 
         try {

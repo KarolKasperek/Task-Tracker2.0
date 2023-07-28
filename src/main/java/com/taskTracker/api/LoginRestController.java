@@ -2,11 +2,13 @@ package com.taskTracker.api;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginRestController {
 
     @PostMapping("/login")
+    @ResponseStatus(HttpStatus.CONTINUE)
     public String login() {
 
         return "Login successful.";

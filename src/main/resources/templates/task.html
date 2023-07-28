@@ -32,7 +32,7 @@
                             <option value="inProgress" th:selected="${taskDto.status == 'inProgress'}">In progress</option>
                             <option value="inReview" th:selected="${taskDto.status == 'inReview'}">In review</option>
                             <option value="done" th:selected="${taskDto.status == 'done'}">Done</option>
-                            <option value="deleted" th:selected="${taskDto.status == 'delete'}" id="deleteOption">delete</option>
+                            <option value="archived" th:selected="${taskDto.status == 'archived'}" id="deleteOption">archive</option>
                         </select>
                     </div>
                 </div>

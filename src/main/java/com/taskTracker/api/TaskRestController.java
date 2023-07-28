@@ -4,6 +4,7 @@ import com.taskTracker.dto.TaskDto;
 import com.taskTracker.service.TaskService;
 import com.taskTracker.exception.TaskDoesNotExistException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,6 +14,7 @@ public class TaskRestController {
     private TaskService taskService;
 
     @GetMapping
+    @ResponseStatus(HttpStatus.FOUND)
     public String getTasks() {
 
         StringBuilder stringBuilder = new StringBuilder("Tasks:\n");
@@ -23,6 +25,7 @@ public class TaskRestController {
     }
 
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.FOUND)
     public String getTaskDetails(@PathVariable Long id) {
         try {
             return "Task details for ID: " + id + "\n" + taskService.getTaskInfo(id);
@@ -32,6 +35,7 @@ public class TaskRestController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public String addTask(@RequestBody TaskDto taskDto) {
         taskService.addTask(taskDto);
         return "Task added successfully.";

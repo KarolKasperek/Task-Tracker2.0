@@ -1,4 +1,4 @@
--sending email with attachment
+-fix sending email with attachment
 -fast task edit (delete, change status)
 -access to multiply projects
 -editing status cards (adding, deleting)
