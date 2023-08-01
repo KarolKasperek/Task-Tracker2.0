@@ -1,3 +1,23 @@
 -access to multiply projects
--editing status cards (adding, deleting)
--unit testing
+-CRUD status cards
+
+-task edit->User label- check box instead of choose list
+
+-refactoring and unit testing
+
+strona html do wybierania projektu- index2.html
+strona do tworzenia projektu- index3.html {
+Project name,
+
+}
+prototyp controllera z atrapowymi danymi to check does .html work
+backend prawdziwych danych
+
+--ideas
+settings page with {
+    switching visibility,
+    changing background,
+    removing members
+}
+
+tryout enum statuses

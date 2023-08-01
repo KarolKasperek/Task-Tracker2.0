@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Projects | TaskTracker</title>
+    <link href="../static/css/questionnaire.css" th:href="@{/css/questionnaire.css}" rel="stylesheet" />
+    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+<!--Navigation bar-->
+<div id="nav-placeholder">
+
+</div>
+
+<script>
+            $(function(){
+              $("#nav-placeholder").load("/nav.html");
+            });
+    </script>
+<!--end of Navigation bar-->
+
+<div id="mainFrame">
+    <form>
+        <label>Choose your project</label>
+        <br>
+        <ul class="optionPane">
+            <div th:each="project:${projectList}" th:if="${project.status} != 'archived'">
+                <a th:href="@{'/' + ${project.name}}">
+                    <li th:text="${project.name}" class="pointer"></li>
+                </a>
+                <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${project.id}}"><span class="quickEditOption">🗃</span></a></p>
+            </div>
+        </ul>
+        <!-- project creation area -->
+        <a href="/task-details?status=done"><p class="newTaskBt">➕ New Project</p></a>
+    </form>
+</div>
+</body>
+</html>

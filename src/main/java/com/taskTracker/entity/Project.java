@@ -1,5 +1,6 @@
 package com.taskTracker.entity;
 
+import com.taskTracker.enums.VisibilityStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -19,4 +20,6 @@ public class Project {
     private int id;
     private String name;
     private List<Long> taskIds;
+    VisibilityStatus status;
+
 }

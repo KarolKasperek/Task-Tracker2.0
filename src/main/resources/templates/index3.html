@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project | TaskTracker</title>
+    <link href="../static/css/questionnaire.css" th:href="@{/css/questionnaire.css}" rel="stylesheet" />
+    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
+</head>
+<body>
+
+<div id="mainFrame">
+    <br>
+
+    <form action="/project-details" method="post">
+        <div class="field">
+            <label class="required">Project name</label>
+            <div>
+                <input th:field="${projectDto.name}" class="dataInput">
+                <div th:if="${#fields.hasErrors('ProjectDto.name')}" th:errors="${projectDto.name}" class="error">Name Error</div>
+            </div>
+        </div>
+        <br>
+
+        <div class="field">
+            <label for="status">Visibility</label>
+            <div>
+                <select th:field="$
+                    {projectDto.visibility}" name="visibility" id="visibility" class="optionPane">
+                    <option value="">Private</option>
+                    <option value="">Public</option>
+                </select>
+            </div>
+        </div>
+        <br>
+
+        <input type="hidden" name="id" th:value="${projectDto.id}">
+
+        <div class="submit-container">
+            <input class="submitButton" type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
