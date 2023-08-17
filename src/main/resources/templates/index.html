@@ -36,7 +36,9 @@
                     <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
-            <a href="/task-details?status=toDo"><p class="newTaskBt">➕ Add a card</p></a>
+            <div class="addCardContainer">
+                <a href="/task-details?status=toDo"><p class="newTaskBt">➕ Add a card</p></a>
+            </div>
         </div>
         <div class="status-card">
             <h1>In progress</h1>
@@ -49,7 +51,9 @@
                     <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
-            <a href="/task-details?status=inProgress"><p class="newTaskBt">➕ Add a card</p></a>
+            <div class="addCardContainer">
+                <a href="/task-details?status=inProgress"><p class="newTaskBt">➕ Add a card</p></a>
+            </div>
         </div>
         <div class="status-card">
             <h1>In review</h1>
@@ -62,7 +66,9 @@
                     <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
-            <a href="/task-details?status=inReview"><p class="newTaskBt">➕ Add a card</p></a>
+            <div class="addCardContainer">
+                <a href="/task-details?status=inReview"><p class="newTaskBt">➕ Add a card</p></a>
+            </div>
         </div>
         <div class="status-card">
             <h1>Done</h1>
@@ -75,7 +81,9 @@
                     <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
-            <a href="/task-details?status=done"><p class="newTaskBt">➕ Add a card</p></a>
+            <div class="addCardContainer">
+                <a href="/task-details?status=done"><p class="newTaskBt">➕ Add a card</p></a>
+            </div>
         </div>
     </article>
 

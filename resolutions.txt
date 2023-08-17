@@ -1,11 +1,7 @@
--access to multiply projects {
-strona html do wybierania projektu /projects
-strona do tworzenia projektu /project
-prototyp controllera z atrapowymi danymi to check does .html work
-backend prawdziwych danych
-
-}
+-access to multiply projects
 
 -CRUD status cards
 
--unit testing
+-
+refactoring
+unit testing

@@ -185,3 +185,7 @@ a {
     transform: translateY(-20px);
     height: 15px;
 }
+
+.addCardContainer {
+    height: 1000px
+}
