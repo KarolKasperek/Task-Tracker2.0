@@ -1,6 +1,7 @@
 package com.taskTracker.controller;
 
 import com.taskTracker.dto.TaskDto;
+import com.taskTracker.exception.TaskDoesNotExistException;
 import com.taskTracker.service.RegisterService;
 import com.taskTracker.service.TaskService;
 import jakarta.validation.Valid;
@@ -8,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.DateTimeException;
 
@@ -19,11 +17,10 @@ import java.time.DateTimeException;
 @RequiredArgsConstructor
 public class TaskController {
     private final TaskService taskService;
-
     private final RegisterService registerService;
 
     @GetMapping("/task-details")
-    public String createNewTask(@RequestParam(required = false) String status, Model model) {
+    public String getTask(@RequestParam(required = false) String status, Model model) {
 
         TaskDto taskDto = new TaskDto();
         taskDto.setStatus(status);
@@ -33,22 +30,48 @@ public class TaskController {
     }
 
     @PostMapping("/task-details")
-    public String processAddingTask(@Valid @ModelAttribute("taskRequest") TaskDto taskDto, BindingResult bindingResult, Model model) {
+    public String addTask(TaskDto taskDto, Model model) {
 
-        if (bindingResult.hasErrors()) {
-            return "index";
-        } else {
-
-            try {
-                taskService.addTask(taskDto);
-            } catch (IllegalArgumentException e) {
-                model.addAttribute("fieldsNotFilledMsg", e.getMessage());
-                return "index";
-            } catch (DateTimeException d) {
-                model.addAttribute("invalidDateMsg", d.getMessage());
-                return "index";
-            }
-        }
+        taskService.addTask(taskDto);
         return "redirect:/";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String getTaskDetails(@PathVariable Long id, Model model) {
+
+        addUsersAttribute(model);
+        model.addAttribute("accounts", registerService.getAllAccounts());
+        try {
+            model.addAttribute("taskDto", taskService.getTaskInfo(id));
+        } catch (TaskDoesNotExistException e) {
+            model.addAttribute("noTaskMessage", e.getMessage());
+        }
+
+        return "task";
+    }
+
+    @GetMapping("/changeStatus/{id}") //todo
+    public String changeTaskStatus(@PathVariable("id") Long taskId) {
+        System.out.println("OTO STATUS TASKA:"+taskService.getTask(taskId).getStatus());
+        switch (taskService.getTask(taskId).getStatus()) {
+            case "toDo" -> taskService.setTaskStatus(taskId, "inProgress");
+            case "inProgress" -> taskService.setTaskStatus(taskId, "inReview");
+            case "inReview" -> taskService.setTaskStatus(taskId, "done");
+            case "done" -> taskService.setTaskStatus(taskId, "archived");
+        }
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/archive/{id}")
+    public String archiveTask(@PathVariable("id") Long taskId) {
+
+        taskService.setTaskStatus(taskId, "archived");
+
+        return "redirect:/";
+    }
+
+    private void addUsersAttribute(Model model) {
+        model.addAttribute("users", registerService.getAllAccounts());
     }
 }

@@ -1,4 +1,6 @@
--access to multiply projects
+-access to multiply projects {
+    projekt tworzy sie, task tworzy sie, jednak nie jest dodawany do listy taskow w projekcie i nie jest wyswietlany w projekcie
+}
 
 -
 refactoring
