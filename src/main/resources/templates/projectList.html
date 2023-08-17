@@ -20,11 +20,11 @@
         <br>
         <p>■■■■■■■■■■■■■■■■■■■■</p>
         <div style="height:20px;">
-            <a href="/project-details"><p class="newTaskBt">➕ New</p></a>
+            <a href="/new-project"><p class="newTaskBt">➕ New</p></a>
         </div>
         <ul style="transform:translateX(55px)">
             <div th:each="project:${projectList}" ><!--th:if="${project.status} != 'archived'"-->
-                <a th:href="@{'/' + ${project.id}}">
+                <a th:href="@{'/project/' + ${project.id}}">
                     <li th:text="${project.name}" class="pointer"></li>
                 </a>
             </div>

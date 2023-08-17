@@ -1,7 +1,5 @@
 -access to multiply projects
 
--CRUD status cards
-
 -
 refactoring
 unit testing

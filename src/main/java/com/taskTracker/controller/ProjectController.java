@@ -23,8 +23,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProjectController {
     private final ProjectService projectService;
-    private final TaskService taskService;
-    private final RegisterService registerService;
 
     @GetMapping("/")
     public String getProjectListPage(Model model) {
@@ -32,20 +30,20 @@ public class ProjectController {
         return "projectList";
     }
 
-    @GetMapping("/project-details")
+    @GetMapping("/new-project")
     public String getProjectCreationPage(Model model) {
         ProjectDto projectDto = new ProjectDto();
         model.addAttribute("projectDto", projectDto);
         return "project";
     }
 
-    @PostMapping("project-details")
+    @PostMapping("new-project")
     public String addNewProject(ProjectDto projectDto) {
         projectService.addProject(projectDto);
         return "redirect:/";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/project/{id}")
     public String getProjectPage(@PathVariable("id") int projectId, Model model) {
         ProjectDto projectDto = projectService.getProject(projectId);
         List<TaskDto> taskList = projectDto.getTaskDtoList();
@@ -59,35 +57,4 @@ public class ProjectController {
 //        taskService.addTask(taskDto);
 //        return "redirect:/";
 //    }
-
-    @GetMapping("/task-details")
-    public String createNewTask(@RequestParam(required = false) String status, Model model) {
-
-        TaskDto taskDto = new TaskDto();
-        taskDto.setStatus(status);
-        model.addAttribute("taskDto", taskDto);
-        model.addAttribute("accounts", registerService.getAllAccounts());
-        return "task";
-    }
-
-    @PostMapping("/task-details")
-    public String processAddingTask(@Valid @ModelAttribute("taskRequest") TaskDto taskDto, BindingResult bindingResult, Model model) {
-
-        if (bindingResult.hasErrors()) {
-            return "index";
-        } else {
-
-            try {
-                taskService.addTask(taskDto);
-                projectService.addTaskToProject(1, (long) taskService.getAllTasks().size());
-            } catch (IllegalArgumentException e) {
-                model.addAttribute("fieldsNotFilledMsg", e.getMessage());
-                return "index";
-            } catch (DateTimeException d) {
-                model.addAttribute("invalidDateMsg", d.getMessage());
-                return "index";
-            }
-        }
-        return "redirect:/";
-    }
 }
