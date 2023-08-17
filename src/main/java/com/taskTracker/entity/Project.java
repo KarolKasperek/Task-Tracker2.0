@@ -2,6 +2,7 @@ package com.taskTracker.entity;
 
 import com.taskTracker.enums.VisibilityStatus;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,8 +18,10 @@ import java.util.List;
 @Data
 public class Project {
     @Id
+    @GeneratedValue
     private int id;
     private String name;
+    private String description;
     private List<Long> taskIds;
     VisibilityStatus status;
 

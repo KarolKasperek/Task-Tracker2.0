@@ -15,21 +15,27 @@
 
     <form action="/project-details" method="post">
         <div class="field">
-            <label class="required">Project name</label>
+            <label for="name">Name</label>
             <div>
-                <input th:field="${projectDto.name}" class="dataInput">
-                <div th:if="${#fields.hasErrors('ProjectDto.name')}" th:errors="${projectDto.name}" class="error">Name Error</div>
+                <input th:field="${projectDto.name}" class="dataInput" name="name" id="name">
             </div>
         </div>
         <br>
 
         <div class="field">
-            <label for="status">Visibility</label>
+            <label for="description">Description</label>
             <div>
-                <select th:field="$
-                    {projectDto.visibility}" name="visibility" id="visibility" class="optionPane">
-                    <option value="">Private</option>
-                    <option value="">Public</option>
+                <textarea th:field="${projectDto.description}" id="description" class="dataInput" name="description"></textarea>
+            </div>
+        </div>
+        <br>
+
+        <div class="field">
+            <label for="visibility">Visibility</label>
+            <div>
+                <select th:field="${projectDto.visibility}" name="visibility" id="visibility" class="optionPane">
+                    <option value="private">Private</option>
+                    <option value="public">Public</option>
                 </select>
             </div>
         </div>

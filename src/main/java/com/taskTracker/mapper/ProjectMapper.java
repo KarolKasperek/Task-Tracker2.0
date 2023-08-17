@@ -26,9 +26,11 @@ public class ProjectMapper {
         }
 
         project.setName(projectDto.getName());
-        project.setTaskIds(projectDto.getTaskDtoList().stream()
-                .map(TaskDto::getId)
-                .collect(Collectors.toList()));
+        if (projectDto.getTaskDtoList() != null) {
+            project.setTaskIds(projectDto.getTaskDtoList().stream()
+                    .map(TaskDto::getId)
+                    .collect(Collectors.toList()));
+        }
         return project;
     }
 

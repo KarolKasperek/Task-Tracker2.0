@@ -48,7 +48,7 @@ public class TaskController {
 
     @GetMapping("/changeStatus/{id}") //todo
     public String changeTaskStatus(@PathVariable("id") Long taskId) {
-        System.out.println("OTO STATUS TASKA:"+taskService.getTask(taskId).getStatus());
+        System.out.println("task status:"+taskService.getTask(taskId).getStatus());
         switch (taskService.getTask(taskId).getStatus()) {
             case "toDo" -> taskService.setTaskStatus(taskId, "inProgress");
             case "inProgress" -> taskService.setTaskStatus(taskId, "inReview");

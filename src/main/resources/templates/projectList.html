@@ -6,37 +6,29 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Projects | TaskTracker</title>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
     <link href="../static/css/questionnaire.css" th:href="@{/css/questionnaire.css}" rel="stylesheet" />
     <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-<!--Navigation bar-->
-<div id="nav-placeholder">
 
-</div>
-
-<script>
-            $(function(){
-              $("#nav-placeholder").load("/nav.html");
-            });
-    </script>
-<!--end of Navigation bar-->
-
-<div id="mainFrame">
+<div id="mainFrame" style="display:flex; justify-content:center">
     <form>
+        <br>
         <label>Choose your project</label>
         <br>
-        <ul class="optionPane">
-            <div th:each="project:${projectList}" th:if="${project.status} != 'archived'">
-                <a th:href="@{'/' + ${project.name}}">
+        <p>■■■■■■■■■■■■■■■■■■■■</p>
+        <div style="height:20px;">
+            <a href="/project-details"><p class="newTaskBt">➕ New</p></a>
+        </div>
+        <ul style="transform:translateX(55px)">
+            <div th:each="project:${projectList}" ><!--th:if="${project.status} != 'archived'"-->
+                <a th:href="@{'/' + ${project.id}}">
                     <li th:text="${project.name}" class="pointer"></li>
                 </a>
-                <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${project.id}}"><span class="quickEditOption">🗃</span></a></p>
             </div>
         </ul>
-        <!-- project creation area -->
-        <a href="/task-details?status=done"><p class="newTaskBt">➕ New Project</p></a>
     </form>
 </div>
 </body>

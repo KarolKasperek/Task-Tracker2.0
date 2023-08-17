@@ -19,6 +19,7 @@ p {
 
 a {
     color: BLACK;
+    text-decoration: none;
 }
 
 label {
