@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import java.util.stream.Collectors;
 
 @Component
-@AllArgsConstructor
 public class ProjectMapper {
 
     public Project toProjectEntity(ProjectDto projectDto) {
@@ -26,6 +25,7 @@ public class ProjectMapper {
         }
 
         project.setName(projectDto.getName());
+        project.setDescription(projectDto.getDescription());
         if (projectDto.getTaskDtoList() != null) {
             project.setTaskIds(projectDto.getTaskDtoList().stream()
                     .map(TaskDto::getId)
@@ -43,6 +43,7 @@ public class ProjectMapper {
         ProjectDto projectDto = new ProjectDto();
         projectDto.setId(project.getId());
         projectDto.setName(project.getName());
+        projectDto.setDescription(project.getDescription());
 
         return projectDto;
     }

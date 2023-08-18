@@ -1,6 +1,7 @@
 package com.taskTracker.api;
 
 import com.taskTracker.dto.TaskDto;
+import com.taskTracker.entity.Account;
 import com.taskTracker.service.TaskService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

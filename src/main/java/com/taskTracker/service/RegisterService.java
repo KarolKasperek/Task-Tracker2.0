@@ -6,6 +6,7 @@ import com.taskTracker.entity.Account;
 import com.taskTracker.mapper.UserMapper;
 import com.taskTracker.repo.AccountRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,13 +19,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RegisterService implements UserDetailsService {
 
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
 
-    private PasswordEncoder passwordEncoder;
-    private UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
     public void register(RegisterDto registerDto) {
 

@@ -3,10 +3,12 @@ package com.taskTracker.service;
 import com.taskTracker.dto.RegisterDto;
 import com.taskTracker.mapper.UserMapper;
 import com.taskTracker.repo.AccountRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,6 +22,11 @@ public class RegisterServiceTest {
     private UserMapper userMapper;
     @InjectMocks
     private RegisterService registerService;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     @DisplayName("Check if the user is registered properly")

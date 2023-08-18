@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class TaskRestController {
     private TaskService taskService;
 
-    @GetMapping
+    @GetMapping("/tasks")
     @ResponseStatus(HttpStatus.FOUND)
     public String getTasks() {
 
@@ -24,7 +24,7 @@ public class TaskRestController {
         return stringBuilder.toString();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/edit/{id}")
     @ResponseStatus(HttpStatus.FOUND)
     public String getTaskDetails(@PathVariable Long id) {
         try {
@@ -34,7 +34,7 @@ public class TaskRestController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/task-details")
     @ResponseStatus(HttpStatus.CREATED)
     public String addTask(@RequestBody TaskDto taskDto) {
         taskService.addTask(taskDto);
