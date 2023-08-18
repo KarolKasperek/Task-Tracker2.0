@@ -40,12 +40,12 @@ public class ProjectService {
     }
 
     public void addTaskToProject(int projectId, Long taskId) {
+
         if (projectRepository.findById(projectId).isPresent()) {
-            List<Long> taskIds = projectRepository.findById(projectId).get().getTaskIds() == null ? new LinkedList<>() : projectRepository.findById(projectId).get().getTaskIds();
-            taskIds.add(taskId);
             Project project = projectRepository.findById(projectId).get();
+            List<Long> taskIds = project.getTaskIds() == null ? new LinkedList<>() : project.getTaskIds();
+            taskIds.add(taskId);
             project.setTaskIds(taskIds);
-            projectRepository.save(project);
         }
     }
 }

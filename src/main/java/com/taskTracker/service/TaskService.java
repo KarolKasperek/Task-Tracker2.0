@@ -20,7 +20,7 @@ public class TaskService {
     private TaskRepository taskRepository;
     private TaskMapper taskMapper;
 
-    public void addTask(TaskDto taskDto) {
+    public Task addTask(TaskDto taskDto) {
         if (checkMandatoryFields(taskDto.getName(), taskDto.getStatus())) {
             throw new IllegalArgumentException("Mandatory fields are not filled in!");
         }
@@ -29,6 +29,7 @@ public class TaskService {
         }
         Task task = taskMapper.toTaskEntity(taskDto);
         taskRepository.save(task);
+        return task;
     }
 
     private boolean checkMandatoryFields(String name, String status) {

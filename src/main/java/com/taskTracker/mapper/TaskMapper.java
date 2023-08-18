@@ -41,7 +41,7 @@ public class TaskMapper {
         if (taskDto.getAccountId() == null) {
             return task;
         }
-        task.setAccount(accountRepo.findById(taskDto.getAccountId()).orElseThrow()); //TODO obsluga tego wyjatku
+        task.setAccount(accountRepo.findById(taskDto.getAccountId()).orElseThrow()); //todo obsluga tego wyjatku
         return task;
     }
 

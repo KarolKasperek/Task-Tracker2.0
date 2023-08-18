@@ -1,7 +1,9 @@
 package com.taskTracker.controller;
 
 import com.taskTracker.dto.TaskDto;
+import com.taskTracker.entity.Task;
 import com.taskTracker.exception.TaskDoesNotExistException;
+import com.taskTracker.service.ProjectService;
 import com.taskTracker.service.RegisterService;
 import com.taskTracker.service.TaskService;
 import jakarta.validation.Valid;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.DateTimeException;
 
@@ -18,6 +21,7 @@ import java.time.DateTimeException;
 public class TaskController {
     private final TaskService taskService;
     private final RegisterService registerService;
+    private final ProjectService projectService;
 
     @GetMapping("/task-details")
     public String getTask(@RequestParam(required = false) String status, Model model) {
@@ -32,7 +36,8 @@ public class TaskController {
     @PostMapping("/task-details")
     public String addTask(TaskDto taskDto, Model model) {
 
-        taskService.addTask(taskDto);
+        Task task = taskService.addTask(taskDto);
+        projectService.addTaskToProject(1, task.getId()); //todo realProjectId
         return "redirect:/";
     }
 
@@ -50,9 +55,9 @@ public class TaskController {
         return "task";
     }
 
-    @GetMapping("/changeStatus/{id}") //todo
-    public String changeTaskStatus(@PathVariable("id") Long taskId) {
-        System.out.println("OTO STATUS TASKA:"+taskService.getTask(taskId).getStatus());
+    @GetMapping("/changeStatus/{id}")
+    public String changeTaskStatus(@PathVariable("id") Long taskId) { //todo recover from archiving
+
         switch (taskService.getTask(taskId).getStatus()) {
             case "toDo" -> taskService.setTaskStatus(taskId, "inProgress");
             case "inProgress" -> taskService.setTaskStatus(taskId, "inReview");
