@@ -35,4 +35,7 @@ public class Task {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Account account;
+
+    @ManyToOne
+    private Project project;
 }

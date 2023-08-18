@@ -23,22 +23,23 @@ public class TaskController {
     private final RegisterService registerService;
     private final ProjectService projectService;
 
-    @GetMapping("/task-details")
-    public String getTask(@RequestParam(required = false) String status, Model model) {
+    @GetMapping("/project/{projectId}/task-details")
+    public String getTask(@RequestParam(required = false) String status, @PathVariable("projectId") int projectId, Model model) {
 
         TaskDto taskDto = new TaskDto();
         taskDto.setStatus(status);
         model.addAttribute("taskDto", taskDto);
         model.addAttribute("accounts", registerService.getAllAccounts());
+        model.addAttribute("projectId", projectId);
         return "task";
     }
 
-    @PostMapping("/task-details")
-    public String addTask(TaskDto taskDto, Model model) {
+    @PostMapping("/project/{projectId}/task-details")
+    public String addTask(TaskDto taskDto, @PathVariable("projectId") int projectId, Model model) {
 
         Task task = taskService.addTask(taskDto);
-        projectService.addTaskToProject(1, task.getId()); //todo realProjectId
-        return "redirect:/";
+        projectService.addTaskToProject(projectId, task.getId());
+        return "redirect:/project/"+projectId;
     }
 
     @GetMapping("/edit/{id}")

@@ -37,7 +37,7 @@
                 </div>
             </ul>
             <div class="addCardContainer">
-                <a href="/task-details?status=toDo"><p class="newTaskBt">➕ Add a card</p></a>
+                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=toDo'}"><p class="newTaskBt">➕ Add a card</p></a>
             </div>
         </div>
         <div class="status-card">
@@ -52,7 +52,7 @@
                 </div>
             </ul>
             <div class="addCardContainer">
-                <a href="/task-details?status=inProgress"><p class="newTaskBt">➕ Add a card</p></a>
+                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=inProgress'}"><p class="newTaskBt">➕ Add a card</p></a>
             </div>
         </div>
         <div class="status-card">
@@ -67,7 +67,7 @@
                 </div>
             </ul>
             <div class="addCardContainer">
-                <a href="/task-details?status=inReview"><p class="newTaskBt">➕ Add a card</p></a>
+                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=inReview'}"><p class="newTaskBt">➕ Add a card</p></a>
             </div>
         </div>
         <div class="status-card">
@@ -82,7 +82,7 @@
                 </div>
             </ul>
             <div class="addCardContainer">
-                <a href="/task-details?status=done"><p class="newTaskBt">➕ Add a card</p></a>
+                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=done'}"><p class="newTaskBt">➕ Add a card</p></a>
             </div>
         </div>
     </article>

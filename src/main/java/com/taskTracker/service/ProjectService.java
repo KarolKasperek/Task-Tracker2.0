@@ -5,12 +5,14 @@ import com.taskTracker.entity.Project;
 import com.taskTracker.entity.Task;
 import com.taskTracker.mapper.ProjectMapper;
 import com.taskTracker.repo.ProjectRepository;
+import com.taskTracker.repo.TaskRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,6 +21,7 @@ import java.util.stream.Collectors;
 public class ProjectService {
     private ProjectRepository projectRepository;
     private ProjectMapper projectMapper;
+    private TaskRepository taskRepository;
 
     public void addProject(ProjectDto projectDto) {
         projectRepository.save(projectMapper.toProjectEntity(projectDto));
@@ -32,7 +35,8 @@ public class ProjectService {
 
     public ProjectDto getProject(int id) {
         if (projectRepository.findById(id).isPresent()) {
-            return projectMapper.toProjectDto(projectRepository.findById(id).get());
+            Project project = projectRepository.findById(id).get();
+            return projectMapper.toProjectDto(project);
         } else {
             log.error("Project not found");
             return null;
@@ -41,11 +45,27 @@ public class ProjectService {
 
     public void addTaskToProject(int projectId, Long taskId) {
 
-        if (projectRepository.findById(projectId).isPresent()) {
-            Project project = projectRepository.findById(projectId).get();
-            List<Long> taskIds = project.getTaskIds() == null ? new LinkedList<>() : project.getTaskIds();
-            taskIds.add(taskId);
-            project.setTaskIds(taskIds);
+        Optional<Project> projectOptional = projectRepository.findById(projectId);
+        if (projectOptional.isPresent()) {
+            Project project = projectOptional.get();
+            Task task = taskRepository.findById(taskId).orElseThrow();
+            project.addTask(task);
+          //  List<Long> taskIds = project.getTaskIds() == null ? new LinkedList<>() : project.getTaskIds();
+            //taskIds.add(taskId);
+           // project.setTaskIds(taskIds);
+            projectRepository.save(project);
+//            taskRepository.save(task); no need because of cascade
         }
     }
+
+
+   /* public void addTaskToProject(int projectId, Long taskId) {
+
+        projectRepository.findById(projectId).ifPresent(project ->{
+                    List<Long> taskIds = project.getTaskIds() == null ? new LinkedList<>() : project.getTaskIds();
+                    taskIds.add(taskId);
+                    project.setTaskIds(taskIds);
+                }
+                );
+    }*/
 }

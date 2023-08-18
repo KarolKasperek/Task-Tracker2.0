@@ -2,14 +2,30 @@ package com.taskTracker.mapper;
 
 import com.taskTracker.dto.ProjectDto;
 import com.taskTracker.entity.Project;
+import com.taskTracker.repo.TaskRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ProjectMapperTest {
-    private final ProjectMapper projectMapper = new ProjectMapper();
+    @Mock
+    private TaskRepository taskRepository;
+    @Mock
+    private TaskMapper taskMapper;
+    @InjectMocks
+    private ProjectMapper projectMapper;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        projectMapper = new ProjectMapper(taskRepository, taskMapper);
+    }
 
     @Test
     @DisplayName("converting projectDto to projectEntity")

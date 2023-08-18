@@ -1,15 +1,13 @@
 package com.taskTracker.entity;
 
 import com.taskTracker.enums.VisibilityStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.checkerframework.common.aliasing.qual.Unique;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,7 +21,12 @@ public class Project {
     private int id;
     private String name;
     private String description;
-    private List<Long> taskIds;
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private List<Task> tasks = new ArrayList<>();
     VisibilityStatus status;
 
+    public void addTask(Task task) {
+        tasks.add(task);
+        task.setProject(this);
+    }
 }

@@ -14,7 +14,8 @@
         <div id="mainFrame">
             <br>
 
-            <form action="/task-details" method="post">
+<!--            <form action="/task-details" method="post">-->
+                <form th:action="'/project/' + ${projectId} + '/task-details'" method="post">
                 <div class="field">
                     <label class="required">Task name</label>
                     <div>
