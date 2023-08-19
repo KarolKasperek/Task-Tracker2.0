@@ -11,17 +11,16 @@
 </head>
 
 <body>
-    <!--Navigation bar-->
-    <div id="nav-placeholder">
-
-    </div>
-
-    <script>
-            $(function(){
-              $("#nav-placeholder").load("/nav.html");
-            });
-    </script>
-    <!--end of Navigation bar-->
+<nav class="navigation">
+    <ul>
+        <li><img id="icon" src="images/taskTrucker.png" alt="logo" th:src="@{/images/taskTrucker.png}"></li>
+        <!--        <li><a href="/">| Home</a></li>-->
+        <li><a href="/">| Projects</a></li>
+        <li><a href="/members">| Members</a></li>
+        <li><a href="/share">| Share</a></li>
+        <a href="/sign-out"><button id="signOutBt">Sign out</button></a>
+    </ul>
+</nav>
     <hr id="navSplitLine">
 
     <article class="workspace">
@@ -30,10 +29,10 @@
             <hr>
             <ul>
                 <div th:each="task:${taskList}" th:if="${task.status} == 'toDo'">
-                    <a th:href="@{'/edit/' + ${task.id}}">
+                    <a th:href="@{${projectId} + '/edit/' + ${task.id}}">
                         <li th:text="${task.name}" class="pointer"></li>
                     </a>
-                    <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
             <div class="addCardContainer">
@@ -45,10 +44,10 @@
             <hr>
             <ul>
                 <div th:each="task:${taskList}" th:if="${task.status} == 'inProgress'">
-                    <a th:href="@{'/edit/' + ${task.id}}">
+                    <a th:href="@{${projectId} + '/edit/' + ${task.id}}">
                         <li th:text="${task.name}" class="pointer"></li>
                     </a>
-                    <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
             <div class="addCardContainer">
@@ -60,10 +59,10 @@
             <hr>
             <ul class="list-items-inreview">
                 <div th:each="task:${taskList}" th:if="${task.status} == 'inReview'">
-                    <a th:href="@{'/edit/' + ${task.id}}">
+                    <a th:href="@{${projectId} + '/edit/' + ${task.id}}">
                         <li th:text="${task.name}" class="pointer"></li>
                     </a>
-                    <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
             <div class="addCardContainer">
@@ -75,10 +74,10 @@
             <hr>
             <ul class="list-items-done">
                 <div th:each="task:${taskList}" th:if="${task.status} == 'done'">
-                    <a th:href="@{'/edit/' + ${task.id}}">
+                    <a th:href="@{${projectId} + '/edit/' + ${task.id}}">
                         <li th:text="${task.name}" class="pointer"></li>
                     </a>
-                    <p class="quickEditOptionPlaceHolder"><a th:href="@{'/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{'/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
                 </div>
             </ul>
             <div class="addCardContainer">

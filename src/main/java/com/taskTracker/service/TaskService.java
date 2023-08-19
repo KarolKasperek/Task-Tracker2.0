@@ -5,6 +5,7 @@ import com.taskTracker.entity.Task;
 import com.taskTracker.mapper.TaskMapper;
 import com.taskTracker.repo.TaskRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.DateTimeException;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class TaskService {
 
     private TaskRepository taskRepository;
@@ -29,21 +31,22 @@ public class TaskService {
         }
         Task task = taskMapper.toTaskEntity(taskDto);
         taskRepository.save(task);
+        log.info("new task added");
         return task;
     }
 
-    private boolean checkMandatoryFields(String name, String status) {
+    public boolean checkMandatoryFields(String name, String status) {
         return name.isBlank() || status.isBlank();
     }
 
-    private boolean checkIfDatesAreValid(String deadline) {
+    public boolean checkIfDatesAreValid(String deadline) {
         return deadline.isBlank() || LocalDate.now().isBefore(LocalDate.parse(deadline));
     }
 
     public List<TaskDto> getAllTasks() {
         return taskRepository.findAll().stream()
                 .map(task -> taskMapper.toTaskRequest(task))
-                .filter(task -> !task.getStatus().equals("archived"))
+                .filter(task -> task != null && !task.getStatus().equals("archived"))
                 .collect(Collectors.toList());
     }
 
@@ -89,6 +92,6 @@ public class TaskService {
     }
 
     public Task getTask(Long taskId) {
-        return taskRepository.findById(taskId).get();
+        return taskRepository.findById(taskId).orElseThrow();
     }
 }

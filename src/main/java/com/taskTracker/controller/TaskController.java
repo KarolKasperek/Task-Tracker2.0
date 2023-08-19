@@ -18,13 +18,14 @@ import java.time.DateTimeException;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("project")
 public class TaskController {
     private final TaskService taskService;
     private final RegisterService registerService;
     private final ProjectService projectService;
 
-    @GetMapping("/project/{projectId}/task-details")
-    public String getTask(@RequestParam(required = false) String status, @PathVariable("projectId") int projectId, Model model) {
+    @GetMapping("{pId}/task-details")
+    public String getTask(@RequestParam(required = false) String status, @PathVariable("pId") int projectId, Model model) {
 
         TaskDto taskDto = new TaskDto();
         taskDto.setStatus(status);
@@ -34,16 +35,16 @@ public class TaskController {
         return "task";
     }
 
-    @PostMapping("/project/{projectId}/task-details")
-    public String addTask(TaskDto taskDto, @PathVariable("projectId") int projectId, Model model) {
+    @PostMapping("{pId}/task-details")
+    public String addTask(TaskDto taskDto, @PathVariable("pId") int projectId, Model model) {
 
         Task task = taskService.addTask(taskDto);
         projectService.addTaskToProject(projectId, task.getId());
         return "redirect:/project/"+projectId;
     }
 
-    @GetMapping("/edit/{id}")
-    public String getTaskDetails(@PathVariable Long id, Model model) {
+    @GetMapping("{pId}/edit/{id}")
+    public String getTaskDetails(@PathVariable Long id, Model model, @PathVariable("pId") int projectId) {
 
         addUsersAttribute(model);
         model.addAttribute("accounts", registerService.getAllAccounts());
@@ -53,11 +54,13 @@ public class TaskController {
             model.addAttribute("noTaskMessage", e.getMessage());
         }
 
+        model.addAttribute("projectId", projectId);
+
         return "task";
     }
 
-    @GetMapping("/changeStatus/{id}")
-    public String changeTaskStatus(@PathVariable("id") Long taskId) { //todo recover from archiving
+    @GetMapping("{pId}/changeStatus/{id}")
+    public String changeTaskStatus(@PathVariable("id") Long taskId, @PathVariable("pId") int projectId) {
 
         switch (taskService.getTask(taskId).getStatus()) {
             case "toDo" -> taskService.setTaskStatus(taskId, "inProgress");
@@ -66,15 +69,15 @@ public class TaskController {
             case "done" -> taskService.setTaskStatus(taskId, "archived");
         }
 
-        return "redirect:/";
+        return "redirect:/project/"+projectId;
     }
 
-    @GetMapping("/archive/{id}")
-    public String archiveTask(@PathVariable("id") Long taskId) {
+    @GetMapping("{pId}/archive/{id}")
+    public String archiveTask(@PathVariable("id") Long taskId, @PathVariable("pId") int projectId) {
 
         taskService.setTaskStatus(taskId, "archived");
 
-        return "redirect:/";
+        return "redirect:/project/" + projectId;
     }
 
     private void addUsersAttribute(Model model) {
