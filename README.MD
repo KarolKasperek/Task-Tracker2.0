@@ -10,7 +10,7 @@ Developed by [Karol Kasperek](https://github.com/KarolKasperek).
 - four states of a task: **to do**, **in progress**, **in review** and **done**
 - a possibility to add due date for a task through a calendar attached to the task creation board
 - tasks can have a title and a longer description
-- the app can be accessed on three levels: **administrator**, **architect** and **developer**
+- a possbility to create a few different project to separate tasks
 - a possbility to edit already created tasks
 
 ## Screenshots
