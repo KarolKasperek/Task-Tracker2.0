@@ -45,12 +45,19 @@ public class TaskServiceTest {
         taskDto.setStatus("done");
         taskDto.setDeadline(LocalDate.of(2030, 11, 12));
 
+        Task task = new Task();
+        task.setId(1L);
+        task.setName("create new branches");
+        task.setStatus("done");
+        task.setDeadline(LocalDate.of(2030, 11, 12));
+
         //when
-        System.out.println(taskService.addTask(taskDto).getName());
-        taskService.addTask(taskDto);
+        when(taskMapper.toTaskEntity(taskDto)).thenReturn(task);
+        Task savedTask = taskService.addTask(taskDto);
 
         //then
-        assertThat("create new branches", equalTo(taskService.getTask(1L).getName()));
+        verify(taskRepository, times(1)).save(task);
+        assertThat(savedTask, equalTo(task));
     }
 
     @Test
