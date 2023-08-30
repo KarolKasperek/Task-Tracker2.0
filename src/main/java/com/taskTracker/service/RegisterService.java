@@ -50,7 +50,7 @@ public class RegisterService implements UserDetailsService {
 
     public List<AccountDto> getAllAccounts() {
         return accountRepository.findAll().stream()
-                .map(accountEntity -> userMapper.toAccountRequest(accountEntity))
+                .map(userMapper::toAccountRequest)
                 .collect(Collectors.toList());
     }
 }
