@@ -31,7 +31,6 @@ public class TaskServiceTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        taskService = new TaskService(taskRepository, taskMapper);
     }
 
     @Test

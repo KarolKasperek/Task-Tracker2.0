@@ -23,6 +23,7 @@ public class LoginRestController {
     }
 
     @PostMapping("/logout")
+    @ResponseStatus(HttpStatus.OK)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
