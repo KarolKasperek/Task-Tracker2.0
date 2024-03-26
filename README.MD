@@ -15,20 +15,20 @@ Developed by [Karol Kasperek](https://github.com/KarolKasperek).
 
 ## Screenshots
 
-![workspacePage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/5af7e3cc-e8e5-4df8-9c2b-dcaf74dad1b9)
+![workspacePage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/427a8ff8-888c-4ae1-b1ca-b7faa1e3af3e)
 *Workspace*
 
-![taskCreationPage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/57fbe978-3517-4227-b9fe-30d73fab02b2)
+![taskPage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/41c5fb27-bf0a-46d4-9d21-7265f0ac0d6d)
 *Task creation*
 
-![membersPage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/e0ca2f36-4863-4f36-8c44-fa17d7cbbd16)
+![mambersPage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/ad6c170a-23b2-4a1b-895e-4030fd9794d3)
 *Members page with statistics*
 
-![sharePage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/9b5347bf-2b10-4002-86f9-d3b4af5350e6)
+![sharePage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/91a572b6-6698-4558-a723-9d9d3af532e8)
 *Share page*
 
-![signInPage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/b65070f0-2698-48ed-8527-141e32650034)
+![signInPage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/febe7f1b-61cf-4335-9cda-5485c1a74183)
 *Sign In*
 
-![signUpPage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/975f1ab2-abb6-48c5-aed2-bb195ffda073)
+![signUpPage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/e362c3e5-952d-4367-8c7a-2d124f6b07c1)
 *Sign Up*
