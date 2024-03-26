@@ -2,80 +2,78 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task | TaskTracker</title>
-    <link href="../static/css/questionnaire.css" th:href="@{/css/questionnaire.css}" rel="stylesheet" />
-    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
+    <link href="../static/style/task.css" th:href="@{/style/task.css}" rel="stylesheet" />
+    <link rel="icon" href="../static/img/taskTrucker.png" th:href="@{/img/taskTrucker.png}">
 </head>
 
 <body>
-
-        <div id="mainFrame">
+    <div id="mainFrame">
+        <br>
+        <form th:action="'/project/' + ${projectId} + '/task-details'" method="post">
+            <div class="field">
+                <label class="required">Task name:</label>
+                <div>
+                    <input th:field="${taskDto.name}" class="dataInput" required>
+                    <div th:if="${#fields.hasErrors('taskDto.name')}" th:errors="${taskDto.name}" class="error">Name Error</div>
+                </div>
+                </div>
             <br>
 
-<!--            <form action="/task-details" method="post">-->
-                <form th:action="'/project/' + ${projectId} + '/task-details'" method="post">
-                <div class="field">
-                    <label class="required">Task name</label>
-                    <div>
-                        <input th:field="${taskDto.name}" class="dataInput">
-                        <div th:if="${#fields.hasErrors('taskDto.name')}" th:errors="${taskDto.name}" class="error">Name Error</div>
-                    </div>
+            <div class="field">
+                <label for="status" class="selectLabel">Status:</label>
+                <div>
+                    <select th:field="${taskDto.status}" id="status">
+                        <option value="toDo" th:selected="${taskDto.status == null or taskDto.status == 'toDo'}">To do</option>
+                        <option value="inProgress" th:selected="${taskDto.status == 'inProgress'}">In progress</option>
+                        <option value="inReview" th:selected="${taskDto.status == 'inReview'}">In review</option>
+                        <option value="done" th:selected="${taskDto.status == 'done'}">Done</option>
+                        <option value="archived" th:selected="${taskDto.status == 'archived'}" id="deleteOption">archive</option>
+                    </select>
                 </div>
-                <br>
+            </div>
 
-                <div class="field">
-                    <label>Status</label>
-                    <div>
-                        <select th:field="${taskDto.status}" class="optionPane">
-                            <option value="toDo" th:selected="${taskDto.status == null or taskDto.status == 'toDo'}">To do</option>
-                            <option value="inProgress" th:selected="${taskDto.status == 'inProgress'}">In progress</option>
-                            <option value="inReview" th:selected="${taskDto.status == 'inReview'}">In review</option>
-                            <option value="done" th:selected="${taskDto.status == 'done'}">Done</option>
-                            <option value="archived" th:selected="${taskDto.status == 'archived'}" id="deleteOption">archive</option>
-                        </select>
-                    </div>
+            <br>
+
+            <div class="field">
+                <label for="description">Description:</label>
+                <div>
+                    <textarea th:field="${taskDto.description}" id="description" class="dataInput"></textarea>
                 </div>
-                <br>
+            </div>
+            <br>
 
-                <div class="field">
-                    <label for="description">Description</label>
-                    <div>
-                        <textarea th:field="${taskDto.description}" id="description" class="dataInput"></textarea>
-                    </div>
+            <div class="field">
+                <label for="deadline">Deadline:</label>
+                <div>
+                    <input th:field="${taskDto.deadline}" type="date" id="deadline" class="dateInput" required>
                 </div>
-                <br>
+                <div th:text="${invalidDateMessage}" class="error">error</div>
+            </div>
+            <br>
 
-                <div class="field">
-                    <label for="deadline">Deadline</label>
-                    <div>
-                        <input th:field="${taskDto.deadline}" type="date" id="deadline" class="dateInput">
-                    </div>
-                    <div th:text="${invalidDateMessage}" class="error">error</div>
+            <div class="field">
+                <label for="accounts" class="selectLabel">User:</label>
+                <div>
+                    <select th:field="${taskDto.accountId}" name="accounts" id="accounts">
+                        <option value="">Unassigned</option>
+                        <div th:each="account:${accounts}">
+                            <label th:text="${account.name}"></label>
+                            <option th:value="${account.id}" th:text="${account.name}"></option>
+                        </div>
+                    </select>
                 </div>
-                <br>
+            </div>
 
-                <div class="field">
-                    <label for="accounts">User</label>
-                    <div>
-                        <select th:field="${taskDto.accountId}" name="accounts" id="accounts" class="optionPane">
-                            <option value="">Unassigned</option>
-                            <div th:each="account:${accounts}">
-                                <label th:text="${account.name}"></label>
-                                <option th:value="${account.id}" th:text="${account.name}"></option>
-                            </div>
-                        </select>
-                    </div>
-                </div>
-                <br>
+            <br>
 
-                <input type="hidden" name="id" th:value="${taskDto.id}">
+            <input type="hidden" name="id" th:value="${taskDto.id}">
 
-                <div class="submit-container">
-                    <input class="submitButton" type="submit" value="Save">
-                </div>
-            </form>
-        </div>
+            <div class="submit-container">
+                <input class="submitButton" type="submit" value="Save" id="save">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

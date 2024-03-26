@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project | TaskTracker</title>
-    <link href="../static/css/questionnaire.css" th:href="@{/css/questionnaire.css}" rel="stylesheet" />
-    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
+    <link href="../static/style/project.css" th:href="@{/style/project.css}" rel="stylesheet" />
+    <link rel="icon" href="../static/img/taskTrucker.png" th:href="@{/img/taskTrucker.png}">
 </head>
 <body>
 
+<h1 id="title">New Project</h1>
 <div id="mainFrame">
     <br>
 
     <form action="/new-project" method="post">
         <div class="field">
-            <label for="name">Name</label>
+            <label for="name">Name:</label>
             <div>
                 <input th:field="${projectDto.name}" class="dataInput" name="name" id="name">
             </div>
@@ -23,7 +24,7 @@
         <br>
 
         <div class="field">
-            <label for="description">Description</label>
+            <label for="description">Description:</label>
             <div>
                 <textarea th:field="${projectDto.description}" id="description" class="dataInput" name="description"></textarea>
             </div>
@@ -31,7 +32,7 @@
         <br>
 
         <div class="field">
-            <label for="visibility">Visibility</label>
+            <label for="visibility" id="visibilityLabel">Visibility: </label>
             <div>
                 <select th:field="${projectDto.visibility}" name="visibility" id="visibility" class="optionPane">
                     <option value="private">Private</option>
@@ -43,9 +44,7 @@
 
         <input type="hidden" name="id" th:value="${projectDto.id}">
 
-        <div class="submit-container">
-            <input class="submitButton" type="submit" value="Submit">
-        </div>
+        <input id="submit" type="submit" value="Submit">
     </form>
 </div>
 

@@ -2,6 +2,7 @@ package com.taskTracker.config.security;
 
 import com.taskTracker.handler.AccessDeniedHandler;
 import com.taskTracker.service.RegisterService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,12 +15,9 @@ import static com.taskTracker.enums.Role.ADMIN;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class ApplicationSecurityConfiguration {
     private final RegisterService registerService;
-
-    public ApplicationSecurityConfiguration(RegisterService registerService) {
-        this.registerService=registerService;
-    }
 
     @Bean
     protected DefaultSecurityFilterChain configure(HttpSecurity http) throws Exception {
@@ -28,7 +26,7 @@ public class ApplicationSecurityConfiguration {
                 .headers(AbstractHttpConfigurer::disable)
                 .userDetailsService(registerService)
                 .authorizeHttpRequests()
-                .requestMatchers("/css/**", "/images/**", "/js/**", "/sign-up", "/sign-in").permitAll()
+                .requestMatchers("/style/**", "/img/**", "/script/**", "/sign-in", "/sign-up").permitAll()
 //                .requestMatchers("/api/**", "management/api/**").hasRole(ADMIN.name())
                 .requestMatchers(HttpMethod.DELETE).hasAuthority(ADMIN.name())
                 .anyRequest().authenticated()

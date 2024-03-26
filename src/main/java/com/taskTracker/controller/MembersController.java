@@ -18,6 +18,7 @@ public class MembersController {
 
         model.addAttribute("taskService", taskService);
         model.addAttribute("accounts", registerService.getAllAccounts());
+
         return "members";
     }
 }

@@ -1,59 +1,51 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:task="com.taskTracker.service.TaskService">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>TaskTracker- Members</title>
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
-    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
+    <link rel="stylesheet" href="../static/style/members.css" th:href="@{/style/members.css}"/>
+    <link rel="icon" href="../static/img/taskTrucker.png" th:href="@{/img/taskTrucker.png}">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
 <body>
-    <!--Navigation bar-->
-    <div id="nav-placeholder">
+    <header>
+        <nav>
+            <div id="navBar"></div>
+            <script src="../static/script/nav.js" th:src="@{script/nav.js}"></script>
+            <link rel="stylesheet" href="../static/style/navBarDecoration/navMembers.css" th:href="@{/style/navBarDecoration/navMembers.css}">
+        </nav>
+    </header>
 
-    </div>
-
-    <script>
-        $(function(){
-          $("#nav-placeholder").load("/nav.html");
-        });
-    </script>
-    <!--end of Navigation bar-->
-    <hr id="navSplitLine">
-
-    <section>
+    <main>
         <div class="field">
             <div>
                 <dl>
                     <div th:each="account : ${accounts}" class= "columnStats">
-                        <hr class="verticalSplitLine">
                         <dt th:text="${account.name}"></dt>
                         <dd>
-                            <span>id: </span>
+                            <label>ID: </label>
                             <span th:text="${account.id}"></span>
                             <br>
-                            <span>role: </span>
+                            <label>ROLE: </label>
                             <span>user</span>
                             <br>
-                            <span>e-mail: </span>
+                            <label>E-MAIL: </label>
                             <span th:text="${account.email}"></span>
                             <br>
-                            <span>all tasks: </span>
+                            <label>ALL TASKS: </label>
                             <span th:text="${taskService.getTasksNumber(account.id)}"></span>
                             <br>
-                            <span>active tasks: </span>
+                            <label>ACTIVE TASKS: </label>
                             <span th:text="${taskService.getActiveTasksNumber(account.id)}"></span>
                             <br>
-                            <span>finished tasks: </span>
+                            <label>FINISHED TASKS: </label>
                             <span th:text="${taskService.getFinishedTasksNumber(account.id)}"></span>
                         </dd>
                     </div>
                 </dl>
             </div>
         </div>
-    </section>
+    </main>
 </body>
 </html>

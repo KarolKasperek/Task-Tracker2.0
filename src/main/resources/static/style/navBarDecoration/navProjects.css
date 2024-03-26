@@ -1,0 +1,20 @@
+#projects {
+    color: rgb(125, 191, 255);
+}
+
+#projectsHr {
+    margin-top: 2px;
+    border-style: solid;
+    height: 3px;
+    color: rgb(125, 191, 255);
+    border-style: none;
+    background-color: rgb(58, 135, 207);
+}
+
+#projects:hover {
+    background-color: #1D2125;
+}
+
+#membersHr, #shareHr {
+    opacity: 0;
+}

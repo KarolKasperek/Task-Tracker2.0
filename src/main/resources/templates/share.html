@@ -3,37 +3,37 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TaskTracker- Share</title>
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
-    <link rel="stylesheet" href="../static/css/oneFieldWorkbench.css" th:href="@{/css/oneFieldWorkbench.css}"/>
-    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="../static/style/share.css" th:href="@{/style/share.css}"/>
+    <link rel="stylesheet" href="../static/style/oneFieldWorkbench.css" th:href="@{/css/oneFieldWorkbench.css}"/>
+    <link rel="icon" href="../static/img/taskTrucker.png" th:href="@{/img/taskTrucker.png}">
 </head>
 
 <body>
-    <!--Navigation bar-->
-    <div id="nav-placeholder">
-    </div>
-    <script>
-    $(function(){
-      $("#nav-placeholder").load("/nav.html");
-    });
-    </script>
-    <!--end of Navigation bar-->
-    <hr id="navSplitLine">
+    <header>
+        <nav>
+            <div id="navBar"></div>
+            <script src="../static/script/nav.js" th:src="@{script/nav.js}"></script>
+            <link rel="stylesheet" href="../static/style/navBarDecoration/navShare.css" th:href="@{/style/navBarDecoration/navShare.css}">
+        </nav>
+    </header>
 
-    <article>
+    <main>
         <div id="mainFrame">
+            <h1 id="title">Share your workbench</h1>
+            <p>
+                If you want to, you can share your workbench with others.
+                <br>
+                Send an email message with its pdf version.
+            </p>
             <form action="/share" method="post">
-                <h1>&nbsp;Share workbench</h1>
                 <br>
                 <label for="address">To:</label>
                 <input id="address" type="email" name="address" class="dataInput" placeholder="&nbsp;e-mail">
                 <br>
-                <input type="submit" class="submitButton">
+                <input type="submit" value="Send" id="submit">
             </form>
         </div>
-    </article>
+    </main>
 </body>
 </html>

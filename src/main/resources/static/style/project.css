@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+input, textarea {
+    margin-top: 10px;
+    padding: 3px;
+    font-size: 18px;
+    outline: none;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: rgb(172, 172, 172);
+}
+
+input {
+    width: 250px;
+}
+
+textarea {
+    width: 400px;
+    height: 200px;
+}
+
+select {
+    width: 80px;
+    height: 30px;
+    font-size: 17px;
+    transform: translateY(-2px);
+}
+
+.field {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+#title {
+    font-family: "Tilt Warp", sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(58, 135, 207);
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+#mainFrame {
+    padding: 20px;
+    background-color: WHITE;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+}
+
+#submit {
+    width: 400px;
+    height: 40px;
+    margin-top: 10px;
+    background-color: rgb(58, 135, 207);
+    color: WHITE;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 10px;
+}
+
+#submit:hover {
+    transition: 0.2s;
+    background-color: rgb(33, 128, 218);
+    cursor: pointer;
+}
+
+#visibilityLabel {
+    float: left;
+    margin-right: 10px;
+}

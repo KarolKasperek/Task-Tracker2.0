@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AccessDeniedController {
     @GetMapping("/access-denied")
     @ResponseBody
-    public String getLoginPage() {
+    public String getAccessDeniedPage() {
         return "access-denied";
     }
 }

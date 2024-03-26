@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f0f2f5;
+    background-image: url("../img/workspaceBg.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+input, textarea {
+    margin-top: 10px;
+    padding: 3px;
+    font-size: 18px;
+    outline: none;
+    border-style: none;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: rgba(191, 219, 248, 0.05);
+}
+
+input {
+    width: 250px;
+    color: hsl(214, 21%, 75%);
+}
+
+textarea {
+    width: 400px;
+    height: 200px;
+    color: hsl(214, 21%, 75%);
+}
+
+label {
+    color: hsl(214, 21%, 75%);
+}
+
+.selectLabel {
+    margin-right: 10px;
+    float:left;
+}
+
+#status {
+    width: 120px;
+    height: 30px;
+    padding-left: 3px;
+    border-style: none;
+    border-radius: 5px;
+    font-size: 17px;
+    background-color: rgba(191, 219, 248, 0.15);
+    color: hsl(214, 21%, 75%);
+}
+
+#accounts {
+    width: 120px;
+    height: 30px;
+    padding-left: 3px;
+    border-style: none;
+    border-radius: 5px;
+    font-size: 17px;
+    background-color: rgba(191, 219, 248, 0.15);
+    color: hsl(214, 21%, 75%);
+}
+
+#title {
+    font-family: "Tilt Warp", sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(58, 135, 207);
+    margin-bottom: 5px;
+    user-select: none;
+    color: #8C9BAB;
+}
+
+#mainFrame {
+    padding: 20px;
+    background-color: #3B444E;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+#save {
+    width: 400px;
+    height: 40px;
+    margin-top: 10px;
+    background-color: rgb(125, 191, 255);
+    color: WHITE;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 10px;
+}
+
+#save:hover {
+    transition: 0.2s;
+    filter: brightness(0.9);
+    cursor: pointer;
+}

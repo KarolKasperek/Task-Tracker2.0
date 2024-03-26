@@ -1,40 +1,33 @@
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskTracker - sign up</title>
-    <link href="../static/css/questionnaire.css" th:href="@{/css/questionnaire.css}" rel="stylesheet" />
-    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
+    <title>TaskTracker - Sign Up</title>
+    <link rel="stylesheet" href="../static/style/registration.css" th:href="@{/style/registration.css}">
+    <link rel="icon" href="../static/img/taskTrucker.png" th:href="@{/img/taskTrucker.png}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
+
 <body>
+    <h1 id="logo">Task-Tracker</h1>
     <div id="mainFrame">
-        <h1>Join Now</h1>
-        <br>
-        <br>
-        <form action="/sign-up" method="post">
-            <label for="name">Username:</label>
+        <h2>Sign Up</h2>
+        <form action="/sign-up" method="post" onsubmit="return validatePassword()">
+            <input type="text" name="name" placeholder="username" required>
             <br>
-            <input type="text" name="name" class="dataInput">
+            <input type="email" name="email" placeholder="email" required>
             <br>
+            <input type="password" name="password" placeholder="password" id="password" required>
+            <i class="far fa-eye" id="togglePassword"></i>
             <br>
-            <label for="email">E-mail:</label>
+            <input type="password" name="passwordRepetition" placeholder="repeat password" id="repeatedPassword" required>
             <br>
-            <input type="email" name="email" class="dataInput">
-            <br>
-            <br>
-            <label for="password">Password:</label>
-            <br>
-            <input type="password" name="password" class="dataInput">
-            <br>
-            <br>
-            <label for="passwordRepetition">Repeat password:</label>
-            <br>
-            <input type="password" name="passwordRepetition" class="dataInput">
-            <br>
-            <br>
-            <input type="submit" value="submit" class="submitButton">
+            <input type="submit" id="submit" value="Submit">
         </form>
+        <p>Already have an account? <a href="/sign-in">Sign in</a></p>
     </div>
+
+    <script src="../static/script/togglePassword.js" th:src="@{/script/togglePassword.js}"></script>
 </body>
 </html>

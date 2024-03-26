@@ -34,7 +34,7 @@ public class ShareController {
         return "share";
     }
 
-    private void convertHtmlToPdf(String htmlFilePath, String outputPdfFilePath) { //todo: application send workbench in .pdf file
+    private void convertHtmlToPdf(String htmlFilePath, String outputPdfFilePath) { //todo: application sends workbench in .pdf file (currently its just a text)
 
         try {
             Document document = new Document();

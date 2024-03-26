@@ -5,31 +5,30 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Projects | TaskTracker</title>
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
-    <link href="../static/css/questionnaire.css" th:href="@{/css/questionnaire.css}" rel="stylesheet" />
-    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>TaskTracker- Projects</title>
+    <link href="../static/style/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href="../static/style/projectList.css" th:href="@{/style/projectList.css}" rel="stylesheet" />
+    <link rel="icon" href="../static/img/taskTrucker.png" th:href="@{/img/taskTrucker.png}">
 </head>
-<body>
 
-<div id="mainFrame" style="display:flex; justify-content:center">
-    <form>
-        <br>
-        <label>Choose your project</label>
-        <br>
-        <p>■■■■■■■■■■■■■■■■■■■■</p>
-        <div style="height:20px;">
-            <a href="/new-project"><p class="newTaskBt">➕ New</p></a>
+<body>
+    <header>
+        <nav>
+            <div id="navBar"></div>
+            <script src="../static/script/nav.js" th:src="@{script/nav.js}"></script>
+            <link rel="stylesheet" href="../static/style/navBarDecoration/navProjects.css.css" th:href="@{/style/navBarDecoration/navProjects.css}">
+        </nav>
+    </header>
+
+    <main>
+        <div id="mainFrame">
+            <ul>
+                <div th:each="project:${projectList}" >
+                    <a th:href="@{'/project/' + ${project.id}}"><li th:text="${project.name}" class="pointer"></li></a>
+                </div>
+            </ul>
+            <a href="/new-project" id="newProject">➕ Add Project</a>
         </div>
-        <ul style="transform:translateX(55px)">
-            <div th:each="project:${projectList}" ><!--th:if="${project.status} != 'archived'"-->
-                <a th:href="@{'/project/' + ${project.id}}">
-                    <li th:text="${project.name}" class="pointer"></li>
-                </a>
-            </div>
-        </ul>
-    </form>
-</div>
+    </main>
 </body>
 </html>

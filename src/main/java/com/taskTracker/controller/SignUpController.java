@@ -1,7 +1,7 @@
 package com.taskTracker.controller;
 
 import com.taskTracker.dto.RegisterDto;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.taskTracker.service.RegisterService;
 
 @Controller
-@AllArgsConstructor
-public class RegisterController {
-
-    private RegisterService registerService;
+@RequiredArgsConstructor
+public class SignUpController {
+    private final RegisterService registerService;
 
     @GetMapping("/sign-up")
-    public String getRegistration(Model model) {
+    public String getRegistrationPage(Model model) {
+
         RegisterDto registerDto = new RegisterDto();
         model.addAttribute("registerRequest", registerDto);
+
         return "registration";
     }
 

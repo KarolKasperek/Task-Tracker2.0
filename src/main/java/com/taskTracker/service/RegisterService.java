@@ -21,9 +21,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class RegisterService implements UserDetailsService {
-
     private final AccountRepository accountRepository;
-
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
 

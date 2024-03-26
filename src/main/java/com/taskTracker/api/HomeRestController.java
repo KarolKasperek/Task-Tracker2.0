@@ -13,7 +13,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/home")
 @AllArgsConstructor
-@Deprecated
 public class HomeRestController {
     private TaskService taskService;
 

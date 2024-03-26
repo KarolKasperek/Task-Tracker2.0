@@ -1,94 +1,98 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TaskTracker</title>
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
-    <link rel="icon" href="../static/images/taskTrucker.png" th:href="@{/images/taskTrucker.png}">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskTracker- Tasks</title>
+    <link rel="stylesheet" href="../static/style/style.css" th:href="@{/style/style.css}"/>
+    <link rel="stylesheet" href="../static/style/navBar.css" th:href="@{/style/navBar.css}"/>
+    <link rel="icon" href="../static/img/taskTrucker.png" th:href="@{/img/taskTrucker.png}">
 </head>
 
 <body>
-<nav class="navigation">
-    <ul>
-        <li><img id="icon" src="images/taskTrucker.png" alt="logo" th:src="@{/images/taskTrucker.png}"></li>
-        <!--        <li><a href="/">| Home</a></li>-->
-        <li><a href="/">| Projects</a></li>
-        <li><a href="/members">| Members</a></li>
-        <li><a href="/share">| Share</a></li>
-        <a href="/sign-out"><button id="signOutBt">Sign out</button></a>
-    </ul>
-</nav>
-    <hr id="navSplitLine">
+    <header>
+        <nav>
+<!--            <div id="navBar"></div>-->
+<!--            <script src="../static/script/nav.js" th:src="@{script/nav.js}"></script>-->
+            <ul id="menu">
+                <li class="menuItem"><h1 id="logo" class="navItem">TaskTracker</h1></li>
+                <li class="menuItem"><div class="break"></div></li>
+                <li class="menuItem"><a href="/" class="navItem" id="projects">Projects</a><hr id="projectsHr"></li>
+                <li class="menuItem"><a href="/members" class="navItem" id="members">Members</a><hr id="membersHr"></li>
+                <li class="menuItem"><a href="/share" class="navItem" id="share">Share</a><hr id="shareHr"></li>
+                <li class="menuItem"><div class="break"></div></li>
+                <li class="menuItem" id="signOutStick">|</li>
+                <li class="menuItem"><a href="/sign-out" id="profile" class="navItem">Sign out</a></li>
+            </ul>
+            <link rel="stylesheet" href="../static/style/navBarDecoration/navProjects.css" th:href="@{/style/navBarDecoration/navProjects.css}">
+        </nav>
+    </header>
 
-    <article class="workspace">
-        <div class="status-card">
+    <main>
+        <div class="statusCard">
             <h1>To do</h1>
-            <hr>
+            <br>
             <ul>
                 <div th:each="task:${taskList}" th:if="${task.status} == 'toDo'">
                     <a th:href="@{${projectId} + '/edit/' + ${task.id}}">
-                        <li th:text="${task.name}" class="pointer"></li>
+                        <li th:text="${task.name}" class="task"></li>
                     </a>
-                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃 </span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption"> →</span></a></p>
                 </div>
             </ul>
             <div class="addCardContainer">
-                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=toDo'}"><p class="newTaskBt">➕ Add a card</p></a>
+                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=toDo'}"><p class="newTaskBt">+ New Task</p></a>
             </div>
         </div>
-        <div class="status-card">
+        <div class="statusCard">
             <h1>In progress</h1>
-            <hr>
+            <br>
             <ul>
                 <div th:each="task:${taskList}" th:if="${task.status} == 'inProgress'">
                     <a th:href="@{${projectId} + '/edit/' + ${task.id}}">
-                        <li th:text="${task.name}" class="pointer"></li>
+                        <li th:text="${task.name}" class="task"></li>
                     </a>
-                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃 </span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption"> →</span></a></p>
                 </div>
             </ul>
             <div class="addCardContainer">
-                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=inProgress'}"><p class="newTaskBt">➕ Add a card</p></a>
+                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=inProgress'}"><p class="newTaskBt">+ New Task</p></a>
             </div>
         </div>
-        <div class="status-card">
+        <div class="statusCard">
             <h1>In review</h1>
-            <hr>
+            <br>
             <ul class="list-items-inreview">
                 <div th:each="task:${taskList}" th:if="${task.status} == 'inReview'">
                     <a th:href="@{${projectId} + '/edit/' + ${task.id}}">
-                        <li th:text="${task.name}" class="pointer"></li>
+                        <li th:text="${task.name}" class="task"></li>
                     </a>
-                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃 </span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption"> →</span></a></p>
                 </div>
             </ul>
             <div class="addCardContainer">
-                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=inReview'}"><p class="newTaskBt">➕ Add a card</p></a>
+                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=inReview'}"><p class="newTaskBt">+ New Task</p></a>
             </div>
         </div>
-        <div class="status-card">
+        <div class="statusCard">
             <h1>Done</h1>
-            <hr>
+            <br>
             <ul class="list-items-done">
                 <div th:each="task:${taskList}" th:if="${task.status} == 'done'">
                     <a th:href="@{${projectId} + '/edit/' + ${task.id}}">
-                        <li th:text="${task.name}" class="pointer"></li>
+                        <li th:text="${task.name}" class="task"></li>
                     </a>
-                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃</span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption">→</span></a></p>
+                    <p class="quickEditOptionPlaceHolder"><a th:href="@{${projectId} + '/archive/' + ${task.id}}"><span class="quickEditOption">🗃 </span></a>/<a th:href="@{${projectId} + '/changeStatus/' + ${task.id}}"><span class="quickEditOption"> →</span></a></p>
                 </div>
             </ul>
             <div class="addCardContainer">
-                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=done'}"><p class="newTaskBt">➕ Add a card</p></a>
+                <a th:href="@{'/project/' + ${projectId} + '/task-details?status=done'}"><p class="newTaskBt">+ New Task</p></a>
             </div>
         </div>
-    </article>
+    </main>
 
     <footer>
         <input type="hidden" name="projectId" th:value="${projectId}">
     </footer>
-
 </body>
 </html>
