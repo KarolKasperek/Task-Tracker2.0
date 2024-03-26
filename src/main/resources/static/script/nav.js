@@ -37,7 +37,7 @@ document.getElementById("navBar").innerHTML = `
             border-radius: 10px;
             text-decoration: none;
             font-size: 18px;
-            color: #8C9BAB;
+            color: #A1ADBB;
             user-select: none;
             height: 54px;
         }
@@ -58,7 +58,7 @@ document.getElementById("navBar").innerHTML = `
             font-size: 40px;
             font-weight: 400;
             font-style: normal;
-            color: #8C9BAB;
+            color: #A1ADBB;
             user-select: none;
             transform: translateY(-15px);
         }

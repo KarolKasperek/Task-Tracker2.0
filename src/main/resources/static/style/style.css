@@ -9,8 +9,8 @@
 }
 
 body {
-    background-color: black;
     background-image: url("../img/workspaceBg.jpg");
+    background-color: rgba(19, 33, 56, 0.3);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -46,7 +46,7 @@ main li {
     padding: 3px;
     width: 240px;
     list-style: none;
-    background-color: #A6C5E229;
+    background-color: #22272b;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,7 +76,7 @@ main .statusCard {
     width: 260px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #0D0F10;
+    background-color: #101204;
     backdrop-filter: blur(5px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     border-radius: 10px;
@@ -135,7 +135,7 @@ main select {
             border-radius: 10px;
             text-decoration: none;
             font-size: 18px;
-            color: #8C9BAB;
+            color: #A1ADBB;
             user-select: none;
             height: 54px;
         }
@@ -156,9 +156,13 @@ main select {
             font-size: 40px;
             font-weight: 400;
             font-style: normal;
-            color: #8C9BAB;
+            color: #A1ADBB;
             user-select: none;
             transform: translateY(-15px);
+        }
+
+        #logo:hover {
+            background-color: #1D2125;
         }
 
         nav #messages {

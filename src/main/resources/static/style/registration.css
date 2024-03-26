@@ -26,12 +26,13 @@ h2 {
 
 input {
     padding: 10px;
-    border: none;
+    border-style: none;
     outline: none;
     border-bottom: 1px solid rgb(85, 85, 85);
     width: 300px;
     font-size: 16px;
     color: hsl(214, 21%, 75%);
+    border-color: hsl(214, 21%, 75%);
     margin-bottom: 20px;
     background-color: rgb(0, 0, 0, 0);
 }

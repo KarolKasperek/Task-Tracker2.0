@@ -12,7 +12,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f2f5;
+    background-image: url("../img/workspaceBg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 input, textarea {
@@ -20,14 +23,18 @@ input, textarea {
     padding: 3px;
     font-size: 18px;
     outline: none;
-    border-style: solid;
-    border-width: 1px;
+    border-style: none;
     border-radius: 5px;
-    border-color: rgb(172, 172, 172);
+    background-color: rgba(191, 219, 248, 0.05);
+    color: hsl(214, 21%, 75%);
 }
 
 input {
     width: 250px;
+}
+
+input::placeholder {
+    color: hsl(214, 21%, 75%);
 }
 
 textarea {
@@ -40,6 +47,14 @@ select {
     height: 30px;
     font-size: 17px;
     transform: translateY(-2px);
+}
+
+select {
+    background-color: rgba(191, 219, 248, 0.15);
+    color: hsl(214, 21%, 75%);
+    border-style: none;
+    padding: 2px;
+    border-radius: 5px;
 }
 
 .field {
@@ -55,32 +70,34 @@ select {
     font-size: 40px;
     font-weight: 400;
     font-style: normal;
-    color: rgb(58, 135, 207);
+    color: #A1ADBB;
     margin-bottom: 5px;
     user-select: none;
 }
 
 #mainFrame {
     padding: 20px;
-    background-color: WHITE;
+    background-color: #3B444E;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     border-radius: 10px;
+    color: #A1ADBB;
 }
 
 #submit {
-    width: 400px;
     height: 40px;
     margin-top: 10px;
-    background-color: rgb(58, 135, 207);
-    color: WHITE;
+    width: 400px;
     font-weight: bold;
     border-style: none;
     border-radius: 10px;
+    background-color: rgba(125, 191, 255, 0.8);
+    color: WHITE;
+    filter: brightness(0.9);
 }
 
 #submit:hover {
     transition: 0.2s;
-    background-color: rgb(33, 128, 218);
+    filter: brightness(1);
     cursor: pointer;
 }
 
