@@ -32,3 +32,8 @@ Developed by [Karol Kasperek](https://github.com/KarolKasperek).
 
 ![signUpPage](https://github.com/KarolKasperek/Task-Tracker/assets/105314335/e362c3e5-952d-4367-8c7a-2d124f6b07c1)
 *Sign Up*
+
+## How to run?
+- Clone the repository
+- Remember to choose SDK 20 Java version in your IDE
+- Run the TaskTrackerApplication class
