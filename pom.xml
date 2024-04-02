@@ -12,7 +12,7 @@
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Task-Tracker</name>
-	<description>free, open source application for trasking tasks in team projects.</description>
+	<description>TaskTracker is the visual tool that empowers your team to manage any type of project, workflow, or task tracking.</description>
 
 	<properties>
 		<java.version>20</java.version>

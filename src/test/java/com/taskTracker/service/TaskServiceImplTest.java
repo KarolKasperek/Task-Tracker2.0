@@ -4,6 +4,7 @@ import com.taskTracker.dto.TaskDto;
 import com.taskTracker.entity.Task;
 import com.taskTracker.mapper.TaskMapper;
 import com.taskTracker.repo.TaskRepository;
+import com.taskTracker.service.impl.TaskServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,13 +21,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.*;
 
-public class TaskServiceTest {
+public class TaskServiceImplTest {
     @Mock
     private TaskRepository taskRepository;
     @Mock
     private TaskMapper taskMapper;
     @InjectMocks
-    private TaskService taskService;
+    private TaskServiceImpl taskServiceImpl;
 
     @BeforeEach
     public void setUp() {
@@ -52,7 +53,7 @@ public class TaskServiceTest {
 
         //when
         when(taskMapper.toTaskEntity(taskDto)).thenReturn(task);
-        Task savedTask = taskService.addTask(taskDto);
+        Task savedTask = taskServiceImpl.addTask(taskDto);
 
         //then
         verify(taskRepository, times(1)).save(task);
@@ -69,7 +70,7 @@ public class TaskServiceTest {
 
         //when
         //then
-        assertThat(taskService.checkMandatoryFields(name, status), equalTo(false));
+        assertThat(taskServiceImpl.checkMandatoryFields(name, status), equalTo(false));
     }
 
     @Test
@@ -80,7 +81,7 @@ public class TaskServiceTest {
         LocalDate localDate = LocalDate.of(2030, 11, 11);
         String deadLineString = localDate.toString();
         //when
-        boolean checkResult = taskService.checkIfDatesAreValid(deadLineString);
+        boolean checkResult = taskServiceImpl.checkIfDatesAreValid(deadLineString);
 
         //then
         assertThat(checkResult, equalTo(true));
@@ -130,18 +131,18 @@ public class TaskServiceTest {
         List<Task> taskList = new LinkedList<>(List.of(task1, task2, task3));
 
         //when
-        taskService.addTask(taskDto1);
-        taskService.addTask(taskDto2);
-        taskService.addTask(taskDto3);
+        taskServiceImpl.addTask(taskDto1);
+        taskServiceImpl.addTask(taskDto2);
+        taskServiceImpl.addTask(taskDto3);
         when(taskRepository.findAll()).thenReturn(taskList);
         when(taskMapper.toTaskRequest(task1)).thenReturn(taskDto1);
         when(taskMapper.toTaskRequest(task2)).thenReturn(taskDto2);
         when(taskMapper.toTaskRequest(task3)).thenReturn(taskDto3);
 
         //then
-        System.out.println(taskService.getAllTasks().size());
+        System.out.println(taskServiceImpl.getAllTasks().size());
         System.out.println(taskDtoList.size());
-        assertThat(taskService.getAllTasks().size(), equalTo(taskDtoList.size()));
-        assertThat(taskService.getAllTasks().get(1).getId(), equalTo(taskDtoList.get(1).getId()));
+        assertThat(taskServiceImpl.getAllTasks().size(), equalTo(taskDtoList.size()));
+        assertThat(taskServiceImpl.getAllTasks().get(1).getId(), equalTo(taskDtoList.get(1).getId()));
     }
 }

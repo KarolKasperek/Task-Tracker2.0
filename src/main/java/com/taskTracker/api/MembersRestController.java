@@ -1,7 +1,7 @@
 package com.taskTracker.api;
 
 import com.taskTracker.dto.AccountDto;
-import com.taskTracker.service.RegisterService;
+import com.taskTracker.service.impl.RegisterServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +13,11 @@ import java.util.List;
 @RequestMapping("/api/members")
 @RequiredArgsConstructor
 public class MembersRestController {
-    private final RegisterService registerService;
+    private final RegisterServiceImpl registerServiceImpl;
 
     @GetMapping
     public String getMembers() {
-        List<AccountDto> accounts = registerService.getAllAccounts();
+        List<AccountDto> accounts = registerServiceImpl.getAllAccounts();
         List<String> accountsAsStrings = accounts.stream()
                 .map(AccountDto::toString)
                 .toList();

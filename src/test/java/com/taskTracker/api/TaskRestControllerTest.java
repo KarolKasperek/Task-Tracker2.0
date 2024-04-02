@@ -2,7 +2,7 @@ package com.taskTracker.api;
 
 import com.taskTracker.dto.TaskDto;
 import com.taskTracker.exception.TaskDoesNotExistException;
-import com.taskTracker.service.TaskService;
+import com.taskTracker.service.impl.TaskServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 class TaskRestControllerTest {
 
     @Mock
-    private TaskService taskService;
+    private TaskServiceImpl taskServiceImpl;
 
     @InjectMocks
     private TaskRestController taskRestController;
@@ -50,7 +50,7 @@ class TaskRestControllerTest {
         // given
         Long taskId = 2L;
         doThrow(new TaskDoesNotExistException("Task with ID " + taskId + " does not exist."))
-                .when(taskService).getTaskInfo(taskId);
+                .when(taskServiceImpl).getTaskInfo(taskId);
 
         // when
         String result = taskRestController.getTaskDetails(taskId);
@@ -69,6 +69,6 @@ class TaskRestControllerTest {
 
         // then
         assertEquals("Task added successfully.", result);
-        verify(taskService, times(1)).addTask(taskDto);
+        verify(taskServiceImpl, times(1)).addTask(taskDto);
     }
 }

@@ -2,7 +2,7 @@ package com.taskTracker.controller;
 
 import com.taskTracker.dto.ProjectDto;
 import com.taskTracker.dto.TaskDto;
-import com.taskTracker.service.ProjectService;
+import com.taskTracker.service.impl.ProjectServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +13,11 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class ProjectController {
-    private final ProjectService projectService;
+    private final ProjectServiceImpl projectServiceImpl;
 
     @GetMapping("/")
     public String getProjectListPage(Model model) {
-        model.addAttribute("projectList", projectService.getProjectList());
+        model.addAttribute("projectList", projectServiceImpl.getProjectList());
         return "projectList";
     }
 
@@ -30,13 +30,13 @@ public class ProjectController {
 
     @PostMapping("new-project")
     public String addNewProject(ProjectDto projectDto) {
-        projectService.addProject(projectDto);
+        projectServiceImpl.addProject(projectDto);
         return "redirect:/";
     }
 
     @GetMapping("/project/{id}")
     public String getProjectPage(@PathVariable("id") int projectId, Model model) {
-        ProjectDto projectDto = projectService.getProject(projectId);
+        ProjectDto projectDto = projectServiceImpl.getProject(projectId);
         List<TaskDto> taskList = projectDto.getTaskDtoList();
         model.addAttribute("taskList", taskList);
         model.addAttribute("projectId", projectId);

@@ -1,7 +1,7 @@
 package com.taskTracker.api;
 
 import com.taskTracker.dto.ProjectDto;
-import com.taskTracker.service.ProjectService;
+import com.taskTracker.service.impl.ProjectServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 public class ProjectRestControllerTest {
     @Mock
-    private ProjectService projectService;
+    private ProjectServiceImpl projectServiceImpl;
     @InjectMocks
     private ProjectRestController projectRestController;
 
@@ -40,10 +40,10 @@ public class ProjectRestControllerTest {
         ProjectDto projectDto3 = new ProjectDto();
         projectDto3.setName("project-x3");
         //when
-        when(projectService.getProjectList()).thenReturn(new LinkedList<>(List.of(projectDto1, projectDto2, projectDto3)));
+        when(projectServiceImpl.getProjectList()).thenReturn(new LinkedList<>(List.of(projectDto1, projectDto2, projectDto3)));
 
         //then
         assertThat(projectRestController.getProjects(), equalTo(projectDto1.getName() + "\n" + projectDto2.getName() + "\n" + projectDto3.getName() + "\n"));
-        verify(projectService).getProjectList();
+        verify(projectServiceImpl).getProjectList();
     }
 }

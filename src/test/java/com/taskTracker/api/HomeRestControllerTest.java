@@ -1,8 +1,7 @@
 package com.taskTracker.api;
 
 import com.taskTracker.dto.TaskDto;
-import com.taskTracker.entity.Account;
-import com.taskTracker.service.TaskService;
+import com.taskTracker.service.impl.TaskServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,7 +19,7 @@ import static org.mockito.Mockito.*;
 class HomeRestControllerTest {
 
     @Mock
-    private TaskService taskService;
+    private TaskServiceImpl taskServiceImpl;
 
     @InjectMocks
     private HomeRestController homeRestController;
@@ -38,14 +37,14 @@ class HomeRestControllerTest {
     void getTasks_ReturnsListOfTasks() {
         // given
         List<TaskDto> expectedTasks = new ArrayList<>();
-        when(taskService.getAllTasks()).thenReturn(expectedTasks);
+        when(taskServiceImpl.getAllTasks()).thenReturn(expectedTasks);
 
         // when
         List<TaskDto> result = homeRestController.getTasks();
 
         // then
         assertEquals(expectedTasks, result);
-        verify(taskService, times(1)).getAllTasks();
+        verify(taskServiceImpl, times(1)).getAllTasks();
     }
 
     @Test
@@ -60,7 +59,7 @@ class HomeRestControllerTest {
 
         // then
         assertEquals("Task added successfully.", result);
-        verify(taskService, times(1)).addTask(taskDto);
+        verify(taskServiceImpl, times(1)).addTask(taskDto);
     }
 
     @Test
@@ -70,13 +69,13 @@ class HomeRestControllerTest {
         taskDto.setName("Test task");
         taskDto.setDescription("Test description");
 
-        doThrow(new DateTimeException("Invalid date")).when(taskService).addTask(taskDto);
+        doThrow(new DateTimeException("Invalid date")).when(taskServiceImpl).addTask(taskDto);
 
         // when
         String result = homeRestController.addTask(taskDto);
 
         // then
         assertEquals("Invalid date", result);
-        verify(taskService, times(1)).addTask(taskDto);
+        verify(taskServiceImpl, times(1)).addTask(taskDto);
     }
 }

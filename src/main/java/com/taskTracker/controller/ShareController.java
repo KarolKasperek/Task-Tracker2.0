@@ -2,7 +2,7 @@ package com.taskTracker.controller;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfWriter;
-import com.taskTracker.service.EmailService;
+import com.taskTracker.service.impl.EmailServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +16,7 @@ import java.io.*;
 @Controller
 @AllArgsConstructor
 public class ShareController {
-    private EmailService emailService;
+    private EmailServiceImpl emailServiceImpl;
 
     @GetMapping("/share")
     public String getSharePage(Model model) {
@@ -29,7 +29,7 @@ public class ShareController {
 
         model.addAttribute("address", address);
 
-        emailService.sendEmailWithWorkbench(address);
+        emailServiceImpl.sendEmailWithWorkbench(address);
 
         return "share";
     }

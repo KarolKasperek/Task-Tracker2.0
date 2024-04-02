@@ -1,7 +1,7 @@
 package com.taskTracker.api;
 
 import com.taskTracker.dto.RegisterDto;
-import com.taskTracker.service.RegisterService;
+import com.taskTracker.service.impl.RegisterServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -13,7 +13,7 @@ import static org.mockito.Mockito.*;
 class RegisterRestControllerTest {
 
     @Mock
-    private RegisterService registerService;
+    private RegisterServiceImpl registerServiceImpl;
 
     @InjectMocks
     private RegisterRestController registerRestController;
@@ -34,7 +34,7 @@ class RegisterRestControllerTest {
 
         // then
         assertEquals("User registered successfully.", result);
-        verify(registerService, times(1)).register(registerDto);
+        verify(registerServiceImpl, times(1)).register(registerDto);
     }
 
     @Test
@@ -44,13 +44,13 @@ class RegisterRestControllerTest {
         registerDto.setName("testuser");
         registerDto.setPassword("password");
 
-        doThrow(new RuntimeException("Registration failed.")).when(registerService).register(registerDto);
+        doThrow(new RuntimeException("Registration failed.")).when(registerServiceImpl).register(registerDto);
 
         // when
         String result = registerRestController.registerUser(registerDto);
 
         // then
         assertEquals("Registration failed.", result);
-        verify(registerService, times(1)).register(registerDto);
+        verify(registerServiceImpl, times(1)).register(registerDto);
     }
 }
