@@ -35,5 +35,12 @@ Developed by [Karol Kasperek](https://github.com/KarolKasperek).
 
 ## How to run?
 - Clone the repository
-- Remember to choose SDK 20 Java version in your IDE
-- Run the TaskTrackerApplication class
+```
+git clone https://github.com/KarolKasperek/task-tracker
+```
+(You can also download the code as a .jar file)
+- Run the code
+
+Compile and run TaskTrackerApplication class.
+You can find it in "src/main/java/com/taskTracker" directory.
+Remember to choose SDK 20 Java version
