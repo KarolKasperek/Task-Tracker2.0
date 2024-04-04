@@ -44,3 +44,5 @@ git clone https://github.com/KarolKasperek/task-tracker
 Compile and run TaskTrackerApplication class.
 You can find it in "src/main/java/com/taskTracker" directory.
 Remember to choose SDK 20 Java version
+
+Congratulations, Task-Tracker is running on the port 8080.
